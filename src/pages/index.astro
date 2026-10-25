@@ -297,38 +297,11 @@ const slides = [
 ---
 <BaseLayout title="Home">
   
-  <section class="relative bg-black flex flex-col md:flex-row h-[650px] md:h-[600px]">
+  <!-- MAIN SLIDER SECTION -->
+  <section class="relative bg-black flex flex-col md:flex-row md:h-[600px]">
     
-    <!-- LEFT SIDE BAR -->
-    <div class="w-full md:w-[320px] bg-black p-6 md:p-8 flex flex-col justify-center border-r border-slate-800 z-20 relative">
-      
-      <!-- LEFT ARROW (MIDDLE) -->
-      <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
-      </button>
-
-      <!-- TEXT UP (TOP) -->
-      <div class="relative h-[350px] mt-4 ml-10">
-        {slides.map((slide, index) => (
-          <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
-            <h1 class="text-2xl font-extrabold leading-tight text-yellow-500 mb-4">
-              {slide.leftTitle}
-            </h1>
-            <ul class="space-y-2 text-white text-sm font-medium">
-              {slide.leftList.map(item => (
-                <li class="flex items-start gap-2">
-                  <span class="text-yellow-400 font-bold mt-1">✓</span> 
-                  <span set:html={item}></span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- CENTER (Clean Media) -->
-    <div class="w-full md:flex-1 relative h-[350px] md:h-full bg-black">
+    <!-- CENTER (Image/Video) -->
+    <div class="w-full md:flex-1 relative h-[500px] md:h-full bg-black order-1 md:order-2">
       <div class="slider-container absolute inset-0 overflow-hidden">
         {slides.map((slide, index) => (
           <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
@@ -341,37 +314,74 @@ const slides = [
         ))}
       </div>
 
-      <!-- PAUSE BUTTON -->
-      <button id="pauseBtn" class="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 bg-slate-800/80 hover:bg-yellow-500 hover:text-black text-white px-4 py-2 rounded-full transition shadow-lg flex items-center gap-2">
-        <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" /></svg>
-        <span id="pauseText" class="text-sm font-bold">Pause</span>
+      <!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
+      <div class="absolute inset-0 bg-black/70 z-10 md:hidden flex flex-col justify-center p-6 text-white overflow-y-auto">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
+            <h2 class="text-yellow-500 font-bold text-lg mb-2">{slide.leftTitle || slide.rightTitle}</h2>
+            <ul class="space-y-2 text-sm">
+              {(slide.leftList || slide.rightList).map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold">✓</span> <span set:html={item}></span></li>
+              ))}
+            </ul>
+            <div class="mt-4 flex flex-col gap-2">
+               <a href="/order" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black shadow-md">PLACE ORDER</a>
+               <a href="/LUBASA_CATALOGUE.pdf" download class="rounded bg-brand-600 px-4 py-2 text-center text-sm font-bold text-white shadow-md">DOWNLOAD CATALOGUE</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Mobile Arrows (Overlay on image) -->
+      <button id="prevBtnMobile" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+      <button id="nextBtnMobile" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
       </button>
     </div>
 
-    <!-- RIGHT SIDE BAR -->
-    <div class="w-full md:w-[320px] bg-black p-6 md:p-8 flex flex-col justify-center border-l border-slate-800 z-20 relative">
-      
-      <!-- RIGHT ARROW (MIDDLE) -->
-      <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
+    <!-- LEFT SIDE BAR (Desktop Only) -->
+    <div class="hidden md:flex md:w-[320px] bg-black p-6 md:p-8 flex-col justify-center border-r border-slate-800 z-20 relative order-1">
+      <button id="prevBtn" class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+      <div class="relative h-[350px] mt-4 ml-10">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <div class="inline-block self-start rounded bg-yellow-500 px-3 py-1 text-xs font-extrabold text-black mb-4 uppercase">
+              Extra Success Chalk
+            </div>
+            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">
+              {slide.leftTitle}
+            </h1>
+            <ul class="space-y-2 text-white text-sm font-medium">
+              {slide.leftList.map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE BAR (Desktop Only) -->
+    <div class="hidden md:flex md:w-[320px] bg-black p-6 md:p-8 flex-col justify-center border-l border-slate-800 z-20 relative order-3">
+      <button id="nextBtn" class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
       </button>
-
-      <!-- TEXT UP (TOP) -->
       <div class="relative h-[350px] mt-4 mr-10">
         {slides.map((slide, index) => (
           <div class={`slide-text-right ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
             <h2 class="text-2xl font-extrabold leading-tight text-yellow-500 mb-4">
               {slide.rightTitle}
             </h2>
-            <ul class="space-y-3 text-white text-sm font-medium">
+            <ul class="space-y-3 text-white text-sm font-medium mb-6">
               {slide.rightList.map(item => (
-                <li class="flex items-start gap-2">
-                  <span class="text-yellow-400 font-bold mt-1">✓</span> 
-                  <span set:html={item}></span>
-                </li>
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
-            <div class="flex flex-col gap-2 mt-auto pt-4">
+            <div class="flex flex-col gap-2 mt-auto">
               <a href="/order" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black hover:bg-yellow-400 shadow-md">PLACE ORDER</a>
               <a href="/products" class="rounded border border-slate-500 px-4 py-2 text-center text-sm font-bold text-white hover:bg-white hover:text-black shadow-md">PRODUCTS</a>
               <a href="/LUBASA_CATALOGUE.pdf" download class="rounded bg-brand-600 px-4 py-2 text-center text-sm font-bold text-white hover:bg-brand-500 shadow-md">DOWNLOAD CATALOGUE</a>
@@ -395,7 +405,6 @@ const slides = [
   </div>
 
   <!-- Product Range -->
-    <!-- Our Core Business Areas -->
   <section class="mx-auto max-w-6xl px-4 py-20">
     <h2 class="text-center text-3xl font-extrabold text-slate-900 uppercase tracking-tight">What We Do</h2>
     <div class="mx-auto mt-2 h-1 w-20 bg-yellow-500 mb-12"></div>
@@ -447,6 +456,7 @@ const slides = [
     let items = document.querySelectorAll('.slide-item');
     let textsLeft = document.querySelectorAll('.slide-text-left');
     let textsRight = document.querySelectorAll('.slide-text-right');
+    let textsMobile = document.querySelectorAll('.slide-text-mobile');
     let currentSlide = 0;
     let slideTimeout;
     let isPaused = false;
@@ -456,14 +466,18 @@ const slides = [
     function showSlide(index) {
       if (isPaused) return;
 
+      // Remove active class from all
       items.forEach(item => item.classList.remove('active'));
       textsLeft.forEach(text => text.classList.remove('active'));
       textsRight.forEach(text => text.classList.remove('active'));
+      textsMobile.forEach(text => text.classList.remove('active'));
       
+      // Add active class to current
       currentSlide = (index + items.length) % items.length;
       items[currentSlide].classList.add('active');
       textsLeft[currentSlide].classList.add('active');
       textsRight[currentSlide].classList.add('active');
+      textsMobile[currentSlide].classList.add('active');
 
       document.querySelectorAll('video').forEach(v => {
         v.pause();
@@ -496,6 +510,7 @@ const slides = [
       showSlide(currentSlide - 1);
     }
 
+    // Desktop Arrows
     document.getElementById('nextBtn').addEventListener('click', () => {
       if (isPaused) return;
       clearTimeout(slideTimeout);
@@ -508,30 +523,20 @@ const slides = [
       prevSlide();
     });
 
-    document.getElementById('pauseBtn').addEventListener('click', () => {
-      isPaused = !isPaused;
-      const pauseText = document.getElementById('pauseText');
-      const pauseIcon = document.getElementById('pauseIcon');
-      
-      if (isPaused) {
-        clearTimeout(slideTimeout);
-        document.querySelectorAll('video').forEach(v => v.pause());
-        pauseText.innerText = "Play";
-        pauseIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />';
-      } else {
-        pauseText.innerText = "Pause";
-        pauseIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />';
-        
-        let currentItem = items[currentSlide];
-        if (currentItem.getAttribute('data-type') === 'video') {
-          let video = currentItem.querySelector('.main-media');
-          video.play().catch(e => console.log(e));
-        } else {
-          slideTimeout = setTimeout(() => { nextSlide(); }, 8000);
-        }
-      }
+    // Mobile Arrows
+    document.getElementById('nextBtnMobile').addEventListener('click', () => {
+      if (isPaused) return;
+      clearTimeout(slideTimeout);
+      nextSlide();
+    });
+    
+    document.getElementById('prevBtnMobile').addEventListener('click', () => {
+      if (isPaused) return;
+      clearTimeout(slideTimeout);
+      prevSlide();
     });
 
+    // Start
     if (items.length > 0) {
       showSlide(0);
     }
@@ -546,6 +551,21 @@ const slides = [
     .slide-item.active, .slide-text-left.active, .slide-text-right.active {
       opacity: 1;
       pointer-events: auto;
+    }
+    
+    /* Mobile specific styles */
+    .slide-text-mobile {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+    .slide-text-mobile.active {
+      display: block;
+      opacity: 1;
+    }
+    /* Hide the mobile overlay on desktop */
+    @media (min-width: 768px) {
+      .slide-text-mobile { display: none !important; }
     }
   </style>
 </BaseLayout>

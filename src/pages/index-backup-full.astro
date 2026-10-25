@@ -1,0 +1,559 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ==========================================
+// 1. EDIT YOUR PRODUCTS HERE
+// ==========================================
+const products = [
+  { title: 'Extra Success Chalk (White)', desc: 'Smooth, dust-controlled white chalk for classrooms.', icon: '🖍️' },
+  { title: 'Extra Success Chalk (Coloured)', desc: 'Bright, long-lasting coloured chalk.', icon: '🎨' },
+  { title: 'Exercise Books (48 Pages)', desc: 'Standard 48-page exercise books.', icon: '📒' },
+  { title: 'Exercise Books (96 Pages)', desc: 'Standard 96-page exercise books.', icon: '📒' },
+  { title: 'Exercise Books (192 Pages)', desc: 'Large 192-page exercise books.', icon: '📒' },
+  { title: 'Counter Books (3 Quire)', desc: 'Durable 3 quire counter books.', icon: '📗' },
+  { title: 'Counter Books (4 Quire)', desc: 'Durable 4 quire counter books.', icon: '📗' },
+  { title: 'Notepads', desc: 'Quality notepads for daily use.', icon: '📝' },
+  { title: 'Artbooks', desc: 'Blank pages for drawing and art.', icon: '🎨' },
+  { title: 'Graphbooks', desc: 'Grid pages for math and technical drawing.', icon: '📐' },
+];
+
+// ==========================================
+// 2. EDIT YOUR SLIDES AND TEXT HERE
+// ==========================================
+const slides = [
+  // --- SLIDE 1 ---
+  { 
+    type: 'image', 
+    src: '/images/slide1.jpg', 
+    leftTitle: 'Reasons why Extra Success chalk', 
+    leftList: ['Durable', 'Dustless', 'Cheap/affordable', 'Approved by teachers'],
+    rightTitle: 'Packaging',
+    rightList: ['150 sticks in a box', '20 boxes in a carton', '3000 sticks in a carton', 'Durable small & big boxes']
+  },
+
+  // --- SLIDE 2 ---
+  { 
+    type: 'image', 
+    src: '/images/slide2.jpg', 
+    leftTitle: 'Deliveries', 
+    leftList: [
+      'From factory premises to town free', 
+      'Customer faces on from town to own destination', 
+      'Reasonable payment for Kampala & Metropolitan', 
+      'Instant deliveries on orders', 
+      'Takes 1-2 days for up country customers'
+    ],
+    rightTitle: 'Contacts',
+    rightList: [
+      '<b>Office:</b> 0786 610907',
+      '<b>WhatsApp:</b> 0702944478 / 0784256007',
+      '<b>Email:</b> lubasainvestment@gmail.com',
+      '<b>Facebook:</b> Link',
+      '<b>TikTok:</b> Link'
+    ]
+  },
+  // --- SLIDE 3 ---
+  { 
+    type: 'image', 
+    src: '/images/slide3.jpg', 
+    leftTitle: 'CASH & BANK PAYMENTS', 
+    leftList: [
+      '<b>1. Centenary Bank</b><br/>Account Name: Kabenge Samuel<br/>Account Number: 3200380474<br/>Branch: Entebbe Road',
+      '<b>2. Equity Bank</b><br/>Account Name: Lubasa Investments and Company Limited<br/>Account Number: 1003201465926<br/>Branch: Katwe',
+      '<b>3. Mobile Money</b><br/>1. Airtel: +256702944948<br/>2. MTN: +256786610907'
+    ],
+    rightTitle: 'PAYMENT TERMS',
+    rightList: [
+      'Cash payment in Kampala & metropolitan',
+      'Credit sales only 2 weeks given',
+      'Bulky orders, 50% deposit balance on delivery',
+      'Up country and exports use Bank or mobile money',
+      'Proof of payment sent on email incase of bank'
+    ]
+  },
+  
+
+   // --- SLIDE 4 ---
+  { 
+    type: 'image', 
+    src: '/images/slide4.jpg', 
+    leftTitle: 'OUR VALUES', 
+    leftList: [
+      '<b>Quality and quantity</b><br>Highly quality products and in plenty',
+      '<b>Litsen</b><br>Listening and prioritizing customer needs',
+      '<b>Efficiency</b><br>Serve customers on appropriate time',
+      '<b>Flexability</b><br>We reach everywhere in and outside uganda',
+      '<b>Global competitiveness</b><br>Maintain international manufacturing standards'
+    ],
+    rightTitle: 'OUR PRINCIPLES',
+    rightList: [
+      '<b>Uncompromised standards</b><br>Ensure quality control in all our products',
+      '<b>Customer driven action</b><br>We adjust to customer feedback instantly',
+      '<b>Cross boarders reliability</b><br>Clear documentation of our products and packaging',
+      '<b>Adoptable logistics</b><br>Cash payments, flexible bank and mobile money services accepted',
+      '<b>Fast and furious</b><br>Ensure orders processed and delivered as fast as possible'
+    ]
+  },
+  // --- SLIDE 5 ---
+  { 
+    type: 'image', 
+    src: '/images/slide5.jpg', 
+    leftTitle: 'Our Leaders', 
+    leftList: [
+      '<b>Chief Executive Officer</b><br>Mr. Kabenge Samuel<br><span class="text-xs text-slate-300">Tel: 0786610907</span>',
+      '<b>Head of Sales</b><br>Mr. Majjeme Paul<br><span class="text-xs text-slate-300">Tel: 0787578520</span>',
+      '<b>Head of Finance</b><br>Nankanja Grace<br><span class="text-xs text-slate-300">Tel: 0786327614</span>',
+      '<b>Human Resource Manager</b><br>Nagujja Majorine<br><span class="text-xs text-slate-300">Tel: 0701689489</span>',
+      '<b>Head of Production</b><br>John Wagaba<br><span class="text-xs text-slate-300">Tel: 0750669075</span>',
+      '<b>Head of Accounts</b><br>Mr. Sseguya David<br><span class="text-xs text-slate-300">Tel: 0774170537</span>'
+    ],
+    rightTitle: 'Our Staff',
+    rightList: [
+      '<b>Production</b><br>Kasirye Jovan<br>John Wagaba<br>Seruwagi Tendo<br>Kasirye David',
+      '<b>Packing</b><br>Ssuuta Susan<br>Nantaba Serena Florence<br>Mugalasi Victor<br>Nabasirye Sarah<br>Kanabesa Aidah',
+      '<b>Sales Executives</b><br>Wandera Zakalia<br>Kati Sula<br>Banda Francis'
+    ]
+  },
+  // --- SLIDE 6 ---
+  { 
+    type: 'image', 
+    src: '/images/slide6.jpg', 
+    leftTitle: 'OUR PRODUCTS', 
+    leftList: [
+      '<b>School Chalk</b><br>White chalk<br>Coloured chalk',
+      '<b>Books</b><br>Counter books<br>Exercise books 48, 96, 192 pages<br>Note books A5, A6<br>Art books A4, A5<br>Graph books 48, 96 pages',
+      '<b>Papers Stock Size</b><br>Art papers<br>Chip boards<br>Manila papers<br>Bond papers 80mg/70mg<br>Sticker papers (all types)'
+    ],
+    rightTitle: 'OUR PRODUCTS',
+    rightList: [
+      '<b>Other Products</b><br>Reams<br>Sets<br>Pens<br>Rulers<br>Learning stickers<br>Wood glue<br>Seal tapes<br>Pencils<br>Art pencils<br>Spring files<br>Box files<br>Stick notes<br>Stamps<br>Markers<br>White markers<br>White boards<br>Printers<br>Diaries'
+    ]
+  },
+ 
+   // --- SLIDE 7 ---
+  { 
+    type: 'image', 
+    src: '/images/slide7.jpg', 
+    leftTitle: 'WE ALSO DO', 
+    leftList: [
+      '<b>Printing services</b><br>Banners<br>Stickers<br>Business cards<br>Wedding cards<br>Success cards<br>Flyer\'s',
+      '<b>Branding</b><br>Packaging boxes<br>T shirts and all clothes<br>Cups<br>Capes<br>Pens etc',
+      '<b>Embroidery</b><br>Customerised t and shirts<br>Sweaters<br>Digitizing'
+    ],
+    rightTitle: 'WE ALSO DO',
+    rightList: [
+      'Web designing',
+      'Programing',
+      'Building customerised accounting system',
+      'Sacco management systems',
+      'Business registration',
+      'Passport processing',
+      'Driving permit processing',
+      'Nira death and birth certificates',
+      'Trademark registration',
+      'UNBS Q mark registration',
+      'Business consultants',
+      'Logos'
+    ]
+  }, 
+    // --- SLIDE 8 ---
+  { 
+    type: 'image', 
+    src: '/images/slide8.jpg', 
+    leftTitle: 'TOURISTS GUIDERS', 
+    leftList: [
+      'Transportation',
+      'Car hire',
+      'Airport pickups',
+      'Accomodations',
+      'Entertainment programs',
+      'Working permits',
+      'Nationalisation',
+      'Security awakening',
+      'Tourism places'
+    ],
+    rightTitle: 'REAL ESTATE',
+    rightList: [
+      'Land purchasing',
+      'Land selling',
+      'Tittles processing and search',
+      'Surveying',
+      'Houser managers',
+      'Property rent',
+      'Residential renting'
+    ]
+  },
+   // --- SLIDE 9 ---
+  { 
+    type: 'image', src: '/images/slide9.jpg', 
+    leftTitle: 'COMPANY BACKGROUND', 
+    leftList: [
+      'Registered in 2018 and immediately started operations.',
+      'In existence and operations for 8 years.',
+      'Reg No: 80020001396985',
+      'URA TIN: 1015879930',
+      'Employs 18 permanent and 10 part-time workers.',
+      'Created over 100 jobs both Direct and Indirect.'
+    ],
+    rightTitle: 'OUR LOCATION',
+    rightList: [
+      '<b>Postal:</b> P.O BOX 150738, Kampala',
+      '<b>BRANCH 1:</b> Makindye, salaama rd, valley zone near kirruddu hospital.',
+      '<b>BRANCH 2:</b> Wakiso, Busabala, Gangu, Kabuuma zone near Best Junior School.'
+    ]
+  },
+    // --- SLIDE 10 ---
+  { 
+    type: 'image', src: '/images/slide10.jpg', 
+    leftTitle: 'ABOUT LUBASA', 
+    leftList: [
+      'LUBASA Investments and Company Limited is a comprehensive Ugandan manufacturing, supply, and service company registered in 2018. Our flagship is the manufacturing of Extra Success Chalk (white and coloured).',
+      'We supply general stationery and office equipment including printers, pens, files, reams, and more. We also provide professional printing, graphic designing, and corporate branding services.',
+      'Over 8 years, we have grown into a compliant, trusted business (Reg No: 80020001396985; URA TIN: 1015879930), employing 18 permanent and 10 part-time workers, and creating over 100 direct and indirect jobs.',
+      'With branches in Makindye and Wakiso, we ensure free transport from our factory to town and reliable delivery across Kampala, metropolitan areas, and upcountry within 1-2 days.'
+    ],
+    rightTitle: 'MISSION & VISION',
+    rightList: [
+      '<b>OUR MISSION:</b><br/>To empower businesses, institutions, and communities by providing reliable, high-quality supplies, equipment, and professional services, while driving local economic growth through job creation and efficient service delivery.',
+      '<b>OUR VISION:</b><br/>To be the most trusted and versatile partner for institutions and businesses across East Africa, recognized for our flexibility, integrity, and commitment to excellence in everything we do.'
+    ]
+  },
+  
+  // --- 4 VIDEOS ---
+  { 
+    type: 'video', 
+    src: '/images/video1.mp4', 
+    leftTitle: 'THE PRODUCTION PROCESS', 
+    leftList: [
+      '<b>Ingredients:</b><br/>1. Plaster of Paris (P.O.P)<br/>2. Water<br/>3. Lubricant',
+      '<b>The Process:</b><br/>We mix 3 cups of water with 1kg and 200gm of P.O.P and stir for 2 minutes until the mixture dissolves in water. We then pour it on a moulding machine which moulds it into sticks. Then we put them in the sunshine.'
+    ],
+    rightTitle: 'REQUIREMENTS FOR PRODUCTION',
+    rightList: [
+      'Moulding machine (400 capacity) - <b>3,500,000/=</b>',
+      'Weighing scale - <b>150,000/=</b>',
+      'Plaster of Paris - <b>60,000/=</b>',
+      'Mixing bucket - <b>5,000/=</b>',
+      'Lubricant - <b>20,000/=</b>',
+      'Water drum - <b>100,000/=</b>'
+    ]
+  },
+  { 
+    type: 'video', 
+    src: '/images/video2.mp4', 
+    leftTitle: 'DRYING PROCESS', 
+    leftList: [
+      'Chalk takes 1-3 days to dry but in rainy seasons it takes 1-5 days to dry.',
+      'It is badly affected by the rain and needs a large piece of land for great output.',
+      'Drying stalls determine production output. The more stalls, the more production output.',
+      'With a large number of stalls, you do not need artificial drying systems that need a lot of maintenance.',
+      'Even in rainy seasons you can have a wide range of production if you have a good number of stalls with good drying space.'
+    ],
+    rightTitle: 'WHAT WE NEED FOR DRYING',
+    rightList: [
+      'Drying stalls',
+      'Maximum sunshine',
+      'Turplines (Tarpaulins)',
+      'Security (Fence enclosed is better)',
+      'Drying space'
+    ]
+  },
+  { 
+    type: 'video', 
+    src: '/images/video3.mp4', 
+    leftTitle: 'PACKAGING', 
+    leftList: [
+      'When the chalk is dry, we start to pack it in small boxes and carton boxes.',
+      '<b>Two types of packaging:</b><br/>1. <b>3000 sticks:</b> We pack 150 sticks in a small box and compile 20 small boxes to make a carton (3000 sticks).<br/>2. <b>6000 sticks:</b> We pack 100 sticks in a small box and compile 60 small boxes to make a carton (6000 sticks).'
+    ],
+    rightTitle: 'WHAT WE USE IN PACKAGING',
+    rightList: [
+      'Branded small boxes',
+      'Branded carton boxes',
+      'Seal tape',
+      'Black and red paste'
+    ]
+  },
+  { 
+    type: 'video', 
+    src: '/images/video4.mp4', 
+    leftTitle: 'DELIVERIES', 
+    leftList: [
+      'Once packing is finished, the product is ready for sale.',
+      'We have distribution tri-cycles (tuku tuku) that help in delivering all our products to our clients at a reasonable delivery fee where necessary.',
+      'However, the company offers free transport from company premises to town (Kampala and metropolitan).',
+      'A delivery fee is applied according to the distance.',
+      'For upcountry and exports, we deliver by trucks to designated places.'
+    ],
+    rightTitle: 'PRICES & PAYMENT', 
+    rightList: [
+      '<b>White Chalk:</b><br/>3000 sticks: 40,000/=<br/>6000 sticks: 80,000/=',
+      '<b>Coloured Chalk:</b><br/>3000 sticks: 45,000/=<br/>6000 sticks: 90,000/=',
+      '<i>All prices are bargainable depending on the number of boxes ordered.</i>',
+      '<b>Payment Methods:</b> Bank, MoMo Pay, and Cash.'
+    ]
+  },
+];
+---
+<BaseLayout title="Home">
+    <!-- MAIN SLIDER SECTION -->
+  <section class="relative bg-black flex flex-col md:flex-row md:h-[600px]">
+    
+    <!-- CENTER (Image/Video) -->
+    <div class="w-full md:flex-1 relative h-[500px] md:h-full bg-black order-1 md:order-2">
+      <div class="slider-container absolute inset-0 overflow-hidden">
+        {slides.map((slide, index) => (
+          <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
+            {slide.type === 'video' ? (
+              <video src={slide.src} preload="auto" muted playsinline class="main-media w-full h-full object-cover"></video>
+            ) : (
+              <img src={slide.src} alt="Slide" class="main-media w-full h-full object-cover" />
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
+      <div class="absolute inset-0 bg-black/60 z-10 md:hidden flex flex-col justify-center p-6 text-white overflow-y-auto">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
+            <h2 class="text-yellow-500 font-bold text-lg mb-2">{slide.leftTitle || slide.rightTitle}</h2>
+            <ul class="space-y-2 text-sm">
+              {(slide.leftList || slide.rightList).map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold">✓</span> <span set:html={item}></span></li>
+              ))}
+            </ul>
+            <div class="mt-4 flex flex-col gap-2">
+               <a href="/order" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black shadow-md">PLACE ORDER</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Mobile Arrows (Overlay on image) -->
+      <button id="prevBtnMobile" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+      <button id="nextBtnMobile" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      </button>
+    </div>
+
+    <!-- LEFT SIDE BAR (Desktop Only) -->
+    <div class="hidden md:flex md:w-[320px] bg-black p-6 md:p-8 flex-col justify-center border-r border-slate-800 z-20 relative order-1">
+      <button id="prevBtn" class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+      <div class="relative h-[350px] mt-4 ml-10">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <div class="inline-block self-start rounded bg-yellow-500 px-3 py-1 text-xs font-extrabold text-black mb-4 uppercase">
+              Extra Success Chalk
+            </div>
+            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">
+              {slide.leftTitle}
+            </h1>
+            <ul class="space-y-2 text-white text-sm font-medium">
+              {slide.leftList.map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE BAR (Desktop Only) -->
+    <div class="hidden md:flex md:w-[320px] bg-black p-6 md:p-8 flex-col justify-center border-l border-slate-800 z-20 relative order-3">
+      <button id="nextBtn" class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      </button>
+      <div class="relative h-[350px] mt-4 mr-10">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-right ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <h2 class="text-2xl font-extrabold leading-tight text-yellow-500 mb-4">
+              {slide.rightTitle}
+            </h2>
+            <ul class="space-y-3 text-white text-sm font-medium mb-6">
+              {slide.rightList.map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+              ))}
+            </ul>
+            <div class="flex flex-col gap-2 mt-auto">
+              <a href="/order" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black hover:bg-yellow-400 shadow-md">PLACE ORDER</a>
+              <a href="/products" class="rounded border border-slate-500 px-4 py-2 text-center text-sm font-bold text-white hover:bg-white hover:text-black shadow-md">PRODUCTS</a>
+              <a href="/LUBASA_CATALOGUE.pdf" download class="rounded bg-brand-600 px-4 py-2 text-center text-sm font-bold text-white hover:bg-brand-500 shadow-md">DOWNLOAD CATALOGUE</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Quick Links Bar -->
+  <div class="bg-brand-800 border-t border-brand-700 relative z-30 shadow-md">
+    <div class="mx-auto max-w-6xl px-4 flex flex-wrap justify-center md:justify-start text-sm font-medium text-white">
+      <a href="/order" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Place Order</a>
+      <a href="/about" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">About Us</a>
+      <a href="/products" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Chalk Products</a>
+      <a href="/products" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Books & Stationery</a>
+      <a href="/contact" class="px-5 py-4 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Product Range -->
+    <!-- Our Core Business Areas -->
+  <section class="mx-auto max-w-6xl px-4 py-20">
+    <h2 class="text-center text-3xl font-extrabold text-slate-900 uppercase tracking-tight">What We Do</h2>
+    <div class="mx-auto mt-2 h-1 w-20 bg-yellow-500 mb-12"></div>
+    
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      
+      <!-- Manufacturing -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 text-center transition hover:border-brand-500 hover:shadow-xl group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition">🏭</div>
+        <h3 class="font-bold text-lg text-brand-800 mb-2">Manufacturing</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">High-quality Extra Success Chalk (White & Coloured).</p>
+      </div>
+
+      <!-- Stationery -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 text-center transition hover:border-brand-500 hover:shadow-xl group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition">📚</div>
+        <h3 class="font-bold text-lg text-brand-800 mb-2">General Stationery</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Books, printers, reams, files, pens, and office essentials.</p>
+      </div>
+
+      <!-- Services -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 text-center transition hover:border-brand-500 hover:shadow-xl group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition">🖨️</div>
+        <h3 class="font-bold text-lg text-brand-800 mb-2">Services</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Printing, branding, transportation, web design, and more.</p>
+      </div>
+
+      <!-- Consultants -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 text-center transition hover:border-brand-500 hover:shadow-xl group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition">💼</div>
+        <h3 class="font-bold text-lg text-brand-800 mb-2">Consultants</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Business registration, trademarks, accounting, and inquiries.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-brand-50 border-y border-brand-100">
+    <div class="mx-auto max-w-6xl px-4 py-16 text-center">
+      <h2 class="text-3xl font-bold text-brand-900">Need supplies for your school or office?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-slate-600">Get in touch for pricing, bulk orders and reliable delivery across the region.</p>
+      <a href="/contact" class="mt-6 inline-block rounded-lg bg-brand-600 px-8 py-3 font-bold text-white transition hover:bg-brand-800 shadow-lg">Place Your Order Now</a>
+    </div>
+  </section>
+
+  <!-- Slider Logic -->
+  <script>
+    let items = document.querySelectorAll('.slide-item');
+    let textsLeft = document.querySelectorAll('.slide-text-left');
+    let textsRight = document.querySelectorAll('.slide-text-right');
+    let currentSlide = 0;
+    let slideTimeout;
+    let isPaused = false;
+
+    document.querySelectorAll('video').forEach(v => v.load());
+
+    function showSlide(index) {
+      if (isPaused) return;
+
+      items.forEach(item => item.classList.remove('active'));
+      textsLeft.forEach(text => text.classList.remove('active'));
+      textsRight.forEach(text => text.classList.remove('active'));
+      
+      currentSlide = (index + items.length) % items.length;
+      items[currentSlide].classList.add('active');
+      textsLeft[currentSlide].classList.add('active');
+      textsRight[currentSlide].classList.add('active');
+
+      document.querySelectorAll('video').forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+      });
+
+      let currentItem = items[currentSlide];
+      
+      if (currentItem.getAttribute('data-type') === 'video') {
+        let video = currentItem.querySelector('.main-media');
+        video.play().catch(e => console.log("Video error: ", e));
+        video.onended = () => {
+          if (!isPaused) nextSlide();
+        };
+      } else {
+        clearTimeout(slideTimeout);
+        slideTimeout = setTimeout(() => {
+          nextSlide();
+        }, 8000); 
+      }
+    }
+
+    function nextSlide() {
+      if (isPaused) return;
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (isPaused) return;
+      showSlide(currentSlide - 1);
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (isPaused) return;
+      clearTimeout(slideTimeout);
+      nextSlide();
+    });
+    
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (isPaused) return;
+      clearTimeout(slideTimeout);
+      prevSlide();
+    });
+
+    document.getElementById('pauseBtn').addEventListener('click', () => {
+      isPaused = !isPaused;
+      const pauseText = document.getElementById('pauseText');
+      const pauseIcon = document.getElementById('pauseIcon');
+      
+      if (isPaused) {
+        clearTimeout(slideTimeout);
+        document.querySelectorAll('video').forEach(v => v.pause());
+        pauseText.innerText = "Play";
+        pauseIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />';
+      } else {
+        pauseText.innerText = "Pause";
+        pauseIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />';
+        
+        let currentItem = items[currentSlide];
+        if (currentItem.getAttribute('data-type') === 'video') {
+          let video = currentItem.querySelector('.main-media');
+          video.play().catch(e => console.log(e));
+        } else {
+          slideTimeout = setTimeout(() => { nextSlide(); }, 8000);
+        }
+      }
+    });
+
+    if (items.length > 0) {
+      showSlide(0);
+    }
+  </script>
+
+  <style>
+    .slide-item, .slide-text-left, .slide-text-right {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      pointer-events: none;
+    }
+    .slide-item.active, .slide-text-left.active, .slide-text-right.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</BaseLayout>
