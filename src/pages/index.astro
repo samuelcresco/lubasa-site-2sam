@@ -45,13 +45,14 @@ const slides = [
     ],
     rightTitle: 'Contacts',
     rightList: [
-      '<b>Office:</b> 0786 610907',
-      '<b>WhatsApp:</b> 0702944478 / 0784256007',
-      '<b>Email:</b> lubasainvestment@gmail.com',
-      '<b>Facebook:</b> Link',
-      '<b>TikTok:</b> Link'
+      '🏢 <b>Office:</b> 0786 610907',
+      '💬 <b>WhatsApp:</b> 0702944478 / 0784256007',
+      '✉️ <b>Email:</b> lubasainvestment@gmail.com',
+      '📘 <b>Facebook:</b> Link',
+      '🎵 <b>TikTok:</b> Link'
     ]
   },
+  
   // --- SLIDE 3 ---
   { 
     type: 'image', 
@@ -71,7 +72,6 @@ const slides = [
       'Proof of payment sent on email incase of bank'
     ]
   },
-  
 
    // --- SLIDE 4 ---
   { 
@@ -94,6 +94,7 @@ const slides = [
       '<b>Fast and furious</b><br>Ensure orders processed and delivered as fast as possible'
     ]
   },
+  
   // --- SLIDE 5 ---
   { 
     type: 'image', 
@@ -114,6 +115,7 @@ const slides = [
       '<b>Sales Executives</b><br>Wandera Zakalia<br>Kati Sula<br>Banda Francis'
     ]
   },
+  
   // --- SLIDE 6 ---
   { 
     type: 'image', 
@@ -156,6 +158,7 @@ const slides = [
       'Logos'
     ]
   }, 
+  
     // --- SLIDE 8 ---
   { 
     type: 'image', 
@@ -183,6 +186,7 @@ const slides = [
       'Residential renting'
     ]
   },
+  
    // --- SLIDE 9 ---
   { 
     type: 'image', src: '/images/slide9.jpg', 
@@ -202,6 +206,7 @@ const slides = [
       '<b>BRANCH 2:</b> Wakiso, Busabala, Gangu, Kabuuma zone near Best Junior School.'
     ]
   },
+  
     // --- SLIDE 10 ---
   { 
     type: 'image', src: '/images/slide10.jpg', 
@@ -219,10 +224,10 @@ const slides = [
     ]
   },
   
-  // --- 4 VIDEOS ---
+  // --- 4 VIDEOS (UPDATED WITH LIVE VERCEL LINKS) ---
   { 
     type: 'video', 
-    src: '/images/video1.mp4', 
+    src: 'https://glil7gabchyerz3o.public.blob.vercel-storage.com/video1.mp4', 
     leftTitle: 'THE PRODUCTION PROCESS', 
     leftList: [
       '<b>Ingredients:</b><br/>1. Plaster of Paris (P.O.P)<br/>2. Water<br/>3. Lubricant',
@@ -240,7 +245,7 @@ const slides = [
   },
   { 
     type: 'video', 
-    src: '/images/video2.mp4', 
+    src: 'https://glil7gabchyerz3o.public.blob.vercel-storage.com/video2.mp4', 
     leftTitle: 'DRYING PROCESS', 
     leftList: [
       'Chalk takes 1-3 days to dry but in rainy seasons it takes 1-5 days to dry.',
@@ -260,7 +265,7 @@ const slides = [
   },
   { 
     type: 'video', 
-    src: '/images/video3.mp4', 
+    src: 'https://glil7gabchyerz3o.public.blob.vercel-storage.com/video3.mp4', 
     leftTitle: 'PACKAGING', 
     leftList: [
       'When the chalk is dry, we start to pack it in small boxes and carton boxes.',
@@ -276,7 +281,7 @@ const slides = [
   },
   { 
     type: 'video', 
-    src: '/images/video4.mp4', 
+    src: 'https://glil7gabchyerz3o.public.blob.vercel-storage.com/video4.mp4', 
     leftTitle: 'DELIVERIES', 
     leftList: [
       'Once packing is finished, the product is ready for sale.',
@@ -315,7 +320,7 @@ const slides = [
       </div>
 
       <!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
-      <div class="absolute inset-0 bg-black/70 z-10 md:hidden flex flex-col justify-center p-6 text-white overflow-y-auto">
+      <div class="absolute inset-0 bg-black/70 z-10 md:hidden flex flex-col justify-center p-6 py-12 text-white overflow-y-auto">
         {slides.map((slide, index) => (
           <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
             <h2 class="text-yellow-500 font-bold text-lg mb-2">{slide.leftTitle || slide.rightTitle}</h2>
@@ -459,20 +464,15 @@ const slides = [
     let textsMobile = document.querySelectorAll('.slide-text-mobile');
     let currentSlide = 0;
     let slideTimeout;
-    let isPaused = false;
 
     document.querySelectorAll('video').forEach(v => v.load());
 
     function showSlide(index) {
-      if (isPaused) return;
-
-      // Remove active class from all
       items.forEach(item => item.classList.remove('active'));
       textsLeft.forEach(text => text.classList.remove('active'));
       textsRight.forEach(text => text.classList.remove('active'));
       textsMobile.forEach(text => text.classList.remove('active'));
       
-      // Add active class to current
       currentSlide = (index + items.length) % items.length;
       items[currentSlide].classList.add('active');
       textsLeft[currentSlide].classList.add('active');
@@ -490,7 +490,7 @@ const slides = [
         let video = currentItem.querySelector('.main-media');
         video.play().catch(e => console.log("Video error: ", e));
         video.onended = () => {
-          if (!isPaused) nextSlide();
+          nextSlide();
         };
       } else {
         clearTimeout(slideTimeout);
@@ -501,69 +501,50 @@ const slides = [
     }
 
     function nextSlide() {
-      if (isPaused) return;
       showSlide(currentSlide + 1);
     }
 
     function prevSlide() {
-      if (isPaused) return;
       showSlide(currentSlide - 1);
     }
 
-    // Desktop Arrows
     document.getElementById('nextBtn').addEventListener('click', () => {
-      if (isPaused) return;
       clearTimeout(slideTimeout);
       nextSlide();
     });
     
     document.getElementById('prevBtn').addEventListener('click', () => {
-      if (isPaused) return;
       clearTimeout(slideTimeout);
       prevSlide();
     });
 
-    // Mobile Arrows
+    // Mobile arrows
     document.getElementById('nextBtnMobile').addEventListener('click', () => {
-      if (isPaused) return;
       clearTimeout(slideTimeout);
       nextSlide();
     });
     
     document.getElementById('prevBtnMobile').addEventListener('click', () => {
-      if (isPaused) return;
       clearTimeout(slideTimeout);
       prevSlide();
     });
 
-    // Start
     if (items.length > 0) {
       showSlide(0);
     }
   </script>
 
   <style>
-    .slide-item, .slide-text-left, .slide-text-right {
+    .slide-item, .slide-text-left, .slide-text-right, .slide-text-mobile {
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
       pointer-events: none;
     }
-    .slide-item.active, .slide-text-left.active, .slide-text-right.active {
+    .slide-item.active, .slide-text-left.active, .slide-text-right.active, .slide-text-mobile.active {
       opacity: 1;
       pointer-events: auto;
     }
     
-    /* Mobile specific styles */
-    .slide-text-mobile {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-    }
-    .slide-text-mobile.active {
-      display: block;
-      opacity: 1;
-    }
-    /* Hide the mobile overlay on desktop */
     @media (min-width: 768px) {
       .slide-text-mobile { display: none !important; }
     }
