@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ==========================================
+// 1. EDIT YOUR PRODUCTS HERE
+// ==========================================
+const products = [
+  { title: 'Extra Success Chalk (White)', desc: 'Smooth, dust-controlled white chalk for classrooms.', icon: '🖍️' },
+  { title: 'Extra Success Chalk (Coloured)', desc: 'Bright, long-lasting coloured chalk.', icon: '🎨' },
+  { title: 'Exercise Books (48 Pages)', desc: 'Standard 48-page exercise books.', icon: '📒' },
+  { title: 'Exercise Books (96 Pages)', desc: 'Standard 96-page exercise books.', icon: '📒' },
+  { title: 'Exercise Books (192 Pages)', desc: 'Large 192-page exercise books.', icon: '📒' },
+  { title: 'Counter Books (3 Quire)', desc: 'Durable 3 quire counter books.', icon: '📗' },
+  { title: 'Counter Books (4 Quire)', desc: 'Durable 4 quire counter books.', icon: '📗' },
+  { title: 'Notepads', desc: 'Quality notepads for daily use.', icon: '📝' },
+  { title: 'Artbooks', desc: 'Blank pages for drawing and art.', icon: '🎨' },
+  { title: 'Graphbooks', desc: 'Grid pages for math and technical drawing.', icon: '📐' },
+];
+
+// ==========================================
+// 2. EDIT YOUR SLIDES AND TEXT HERE (ALL .jpg NOW)
+// ==========================================
+const slides = [
+  // --- SLIDE 1 (Your Handwritten Notes) ---
+  { 
+    type: 'image', 
+    src: '/images/slide1.jpg', 
+    leftTitle: 'Reasons why Extra Success chalk', 
+    leftList: ['Durable', 'Dustless', 'Cheap/affordable', 'Approved by teachers'],
+    rightTitle: 'Packaging',
+    rightList: ['150 sticks in a box', '20 boxes in a carton', '3000 sticks in a carton', 'Durable small & big boxes']
+  },
+
+  // --- SLIDES 2 TO 10 ---
+  { type: 'image', src: '/images/slide2.jpg', leftTitle: 'ALL STATIONERY', leftList: ['Exercise Books', 'Counter Books', 'Notepads'], rightTitle: 'DETAILS', rightList: ['48 Pages', '96 Pages', '192 Pages'] },
+  { type: 'image', src: '/images/slide3.jpg', leftTitle: 'QUALITY YOU TRUST', leftList: ['White Chalk', 'Coloured Chalk'], rightTitle: 'BULK ORDERS', rightList: ['3 Quire', '4 Quire'] },
+  { type: 'image', src: '/images/slide4.jpg', leftTitle: 'EXERCISE BOOKS', leftList: ['48 Pages', '96 Pages', '192 Pages'], rightTitle: 'OTHER BOOKS', rightList: ['Artbooks', 'Graphbooks'] },
+  { type: 'image', src: '/images/slide5.jpg', leftTitle: 'BULK ORDERS', leftList: ['For schools', 'For retailers'], rightTitle: 'SUPPLY', rightList: ['Fast delivery', 'Bulk discount'] },
+  { type: 'image', src: '/images/slide6.jpg', leftTitle: 'MADE IN UGANDA', leftList: ['Quality', 'Affordable', 'Reliable'], rightTitle: 'LOCAL', rightList: ['Local materials', 'Expert team'] },
+  { type: 'image', src: '/images/slide7.jpg', leftTitle: 'TRUSTED BY TEACHERS', leftList: ['Smooth writing', 'Long lasting'], rightTitle: 'QUALITY', rightList: ['High standard', 'Careful packing'] },
+  { type: 'image', src: '/images/slide8.jpg', leftTitle: 'OFFICE SUPPLIES', leftList: ['Notepads', 'Counter Books'], rightTitle: 'SIZES', rightList: ['3 Quire', '4 Quire'] },
+  { type: 'image', src: '/images/slide9.jpg', leftTitle: 'GRAPHBOOKS', leftList: ['Graph pages', 'Blank pages'], rightTitle: 'FOR ART', rightList: ['Technical drawing', 'Art classes'] },
+  { type: 'image', src: '/images/slide10.jpg', leftTitle: 'CONTACT US', leftList: ['Bulk discount', 'Fast delivery'], rightTitle: 'ORDER NOW', rightList: ['Get a quote', 'Talk to us'] },
+  
+  // --- 4 VIDEOS (Exact names from your folder) ---
+  { type: 'video', src: '/images/video.mp4', leftTitle: 'EXTRA SUCCESS CHALK', leftList: ['High quality', 'Dust controlled', 'Made locally'], rightTitle: 'WATCH', rightList: ['Our process', 'Our factory'] },
+  { type: 'video', src: '/images/video1.mp4', leftTitle: 'PRODUCTION', leftList: ['Quality control', 'Local materials', 'Expert team'], rightTitle: 'FACTORY', rightList: ['See our team', 'See our machines'] },
+  { type: 'video', src: '/images/video2.mp4', leftTitle: 'DELIVERY', leftList: ['Fast delivery', 'Bulk orders', 'Reliable service'], rightTitle: 'SHIPPING', rightList: ['Across Uganda', 'On time'] },
+  { type: 'video', src: '/images/video3.mp4', leftTitle: 'PACKAGING', leftList: ['Secure', 'Clean', 'Ready'], rightTitle: 'READY', rightList: ['For schools', 'For shops'] }
+];
+---
+<BaseLayout title="Home">
+  
+  <section class="relative bg-black flex flex-col md:flex-row h-auto md:h-[600px]">
+    
+    <!-- LEFT SIDE BAR -->
+    <div class="w-full md:w-[320px] bg-black p-6 md:p-8 flex flex-col justify-between border-r border-slate-800 z-20 relative">
+      
+      <!-- TEXT UP (TOP) -->
+      <div class="relative h-[220px] mt-4">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <div class="inline-block self-start rounded bg-yellow-500 px-3 py-1 text-xs font-extrabold text-black mb-4 uppercase">
+              Extra Success Chalk
+            </div>
+            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">
+              {slide.leftTitle}
+            </h1>
+            <ul class="space-y-2 text-white text-sm font-medium">
+              {slide.leftList.map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <!-- LEFT ARROW (MIDDLE) -->
+      <button id="prevBtn" class="absolute left-6 top-1/2 -translate-y-1/2 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-4 rounded-full transition shadow-lg z-30">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+    </div>
+
+    <!-- CENTER (Clean Media) -->
+    <div class="w-full md:flex-1 relative h-[350px] md:h-full bg-black">
+      <div class="slider-container absolute inset-0 overflow-hidden">
+        {slides.map((slide, index) => (
+          <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
+            {slide.type === 'video' ? (
+              <video src={slide.src} preload="auto" muted playsinline class="main-media w-full h-full object-cover"></video>
+            ) : (
+              <img src={slide.src} alt="Slide" class="main-media w-full h-full object-cover" />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE BAR -->
+    <div class="w-full md:w-[320px] bg-black p-6 md:p-8 flex flex-col justify-between border-l border-slate-800 z-20 relative">
+      
+      <!-- TEXT UP (TOP) -->
+      <div class="relative h-[220px] mt-4">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-right ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <h2 class="text-2xl font-extrabold leading-tight text-yellow-500 mb-4">
+              {slide.rightTitle}
+            </h2>
+            <ul class="space-y-2 text-white text-sm font-medium mb-6">
+              {slide.rightList.map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span>{item}</span></li>
+              ))}
+            </ul>
+            <div class="flex flex-col gap-2 mt-auto">
+              <a href="/contact" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black hover:bg-yellow-400 shadow-md">PLACE ORDER</a>
+              <a href="/products" class="rounded border border-slate-500 px-4 py-2 text-center text-sm font-bold text-white hover:bg-white hover:text-black shadow-md">PRODUCTS</a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- RIGHT ARROW (MIDDLE) -->
+      <button id="nextBtn" class="absolute right-6 top-1/2 -translate-y-1/2 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-4 rounded-full transition shadow-lg z-30">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- Quick Links Bar -->
+  <div class="bg-brand-800 border-t border-brand-700 relative z-30 shadow-md">
+    <div class="mx-auto max-w-6xl px-4 flex flex-wrap justify-center md:justify-start text-sm font-medium text-white">
+      <a href="/contact" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Place Order</a>
+      <a href="/about" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">About Us</a>
+      <a href="/products" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Chalk Products</a>
+      <a href="/products" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Books & Stationery</a>
+      <a href="/contact" class="px-5 py-4 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Product Range -->
+  <section class="mx-auto max-w-6xl px-4 py-20">
+    <h2 class="text-center text-3xl font-extrabold text-slate-900 uppercase tracking-tight">Our Full Product Range</h2>
+    <div class="mx-auto mt-2 h-1 w-20 bg-yellow-500 mb-10"></div>
+    
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {products.map(p => (
+        <div class="rounded-xl border border-slate-200 bg-white p-6 transition hover:border-brand-500 hover:shadow-xl group">
+          <div class="text-4xl bg-brand-50 inline-block p-3 rounded-lg group-hover:bg-yellow-100 transition">{p.icon}</div>
+          <h3 class="mt-4 font-bold text-slate-900">{p.title}</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-brand-50 border-y border-brand-100">
+    <div class="mx-auto max-w-6xl px-4 py-16 text-center">
+      <h2 class="text-3xl font-bold text-brand-900">Need supplies for your school or office?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-slate-600">Get in touch for pricing, bulk orders and reliable delivery across the region.</p>
+      <a href="/contact" class="mt-6 inline-block rounded-lg bg-brand-600 px-8 py-3 font-bold text-white transition hover:bg-brand-800 shadow-lg">Place Your Order Now</a>
+    </div>
+  </section>
+
+  <!-- Slider Logic -->
+  <script>
+    let items = document.querySelectorAll('.slide-item');
+    let textsLeft = document.querySelectorAll('.slide-text-left');
+    let textsRight = document.querySelectorAll('.slide-text-right');
+    let currentSlide = 0;
+    let slideTimeout;
+
+    document.querySelectorAll('video').forEach(v => v.load());
+
+    function showSlide(index) {
+      items.forEach(item => item.classList.remove('active'));
+      textsLeft.forEach(text => text.classList.remove('active'));
+      textsRight.forEach(text => text.classList.remove('active'));
+      
+      currentSlide = (index + items.length) % items.length;
+      items[currentSlide].classList.add('active');
+      textsLeft[currentSlide].classList.add('active');
+      textsRight[currentSlide].classList.add('active');
+
+      document.querySelectorAll('video').forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+      });
+
+      let currentItem = items[currentSlide];
+      
+      if (currentItem.getAttribute('data-type') === 'video') {
+        let video = currentItem.querySelector('.main-media');
+        video.play().catch(e => console.log("Video error: ", e));
+        video.onended = () => {
+          nextSlide();
+        };
+           } else {
+        clearTimeout(slideTimeout);
+        slideTimeout = setTimeout(() => {
+          nextSlide();
+        }, 15000); 
+      }
+    }
+
+    function nextSlide() {
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      showSlide(currentSlide - 1);
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      clearTimeout(slideTimeout);
+      nextSlide();
+    });
+    
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      clearTimeout(slideTimeout);
+      prevSlide();
+    });
+
+    if (items.length > 0) {
+      showSlide(0);
+    }
+  </script>
+
+  <style>
+    .slide-item, .slide-text-left, .slide-text-right {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      pointer-events: none;
+    }
+    .slide-item.active, .slide-text-left.active, .slide-text-right.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</BaseLayout>

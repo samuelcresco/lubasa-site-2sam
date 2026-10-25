@@ -1,0 +1,308 @@
+=========================================
+PROJECT SUMMARY: LUBASA INVESTMENTS WEBSITE
+=========================================
+Tech Stack: Astro + Tailwind CSS
+Local Path: D:\lubasa-site
+Current Server Command: npm.cmd run dev -- --port 4321
+Backup Command: Copy-Item -Path src -Destination src_backup -Recurse -Force
+
+WHAT HAS BEEN DONE:
+1. The website is built using Astro with a dark/blue theme.
+2. The Homepage has a custom Hero Slider layout consisting of three columns:
+   - Left Black Bar: Contains a yellow "Extra Success Chalk" tag, a title, and a list with yellow ticks (✓). A left arrow is placed vertically in the middle of this bar.
+   - Center: A clean image/video slider (no text overlays). It plays 10 images and 4 videos. Images stay for 8 seconds, videos wait until they finish before moving to the next slide.
+   - Right Black Bar: Contains a title and a list with yellow ticks (✓). A right arrow is placed vertically in the middle of this bar.
+3. The header has the logo (logo.jpg), thick blue navigation bar, and the footer is dark. 
+4. Contact form is on the /contact page (uses Formspree). 
+5. Blog pages are set up using markdown files in src/content/blog.
+
+CURRENT STATE OF THE SLIDER TEXT (index.astro):
+- Slide 1: Uses the handwritten notes for "Reasons why Extra Success Chalk" (Left) and "Packaging" (Right).
+- Slide 2: Uses the handwritten notes for "Deliveries" (Left) and "Contacts" with emojis as icons (Right).
+- Slides 3-10: Placeholder text.
+- Videos 1-4: Placeholder text.
+
+WHAT NEEDS TO BE FIXED/IMPROVED NEXT:
+- The user wants to be able to edit the text easily.
+- The user wants the checkmarks on the right bar to align perfectly with the text.
+- Ensure all images (slide1.jpg to slide10.jpg) and videos (video1.mp4 to video4.mp4) are correctly loading without 404 errors.
+- The user hates when code breaks existing layouts. ALWAYS backup (Copy-Item -Path src -Destination src_backup -Recurse -Force) before giving new code. Only change what is asked. Do not invent new features.
+2. The Full Code Backup
+Here is the complete code for the main files. You can save this in Notepad as LUBASA_FULL_BACKUP.txt.
+
+File 1: src/pages/index.astro (The Homepage)
+astro
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const products = [
+  { title: 'Extra Success Chalk (White)', desc: 'Smooth, dust-controlled white chalk for classrooms.', icon: '🖍️' },
+  { title: 'Extra Success Chalk (Coloured)', desc: 'Bright, long-lasting coloured chalk.', icon: '🎨' },
+  { title: 'Exercise Books (48 Pages)', desc: 'Standard 48-page exercise books.', icon: '📒' },
+  { title: 'Exercise Books (96 Pages)', desc: 'Standard 96-page exercise books.', icon: '📒' },
+  { title: 'Exercise Books (192 Pages)', desc: 'Large 192-page exercise books.', icon: '📒' },
+  { title: 'Counter Books (3 Quire)', desc: 'Durable 3 quire counter books.', icon: '📗' },
+  { title: 'Counter Books (4 Quire)', desc: 'Durable 4 quire counter books.', icon: '📗' },
+  { title: 'Notepads', desc: 'Quality notepads for daily use.', icon: '📝' },
+  { title: 'Artbooks', desc: 'Blank pages for drawing and art.', icon: '🎨' },
+  { title: 'Graphbooks', desc: 'Grid pages for math and technical drawing.', icon: '📐' },
+];
+
+const slides = [
+  // --- SLIDE 1 ---
+  { 
+    type: 'image', 
+    src: '/images/slide1.jpg', 
+    leftTitle: 'Reasons why Extra Success chalk', 
+    leftList: ['Durable', 'Dustless', 'Cheap/affordable', 'Approved by teachers'],
+    rightTitle: 'Packaging',
+    rightList: ['150 sticks in a box', '20 boxes in a carton', '3000 sticks in a carton', 'Durable small & big boxes']
+  },
+  // --- SLIDE 2 ---
+  { 
+    type: 'image', 
+    src: '/images/slide2.jpg', 
+    leftTitle: 'Deliveries', 
+    leftList: ['From factory premises to town free', 'Customer faces on from town to own destination', 'Reasonable payment for Kampala & Metropolitan', 'Instant deliveries on orders', 'Takes 1-2 days for up country customers'],
+    rightTitle: 'Contacts',
+    rightList: ['🏢 <b>Office:</b> 0786 610907', '💬 <b>WhatsApp:</b> 0702944478 / 0784256007', '✉️ <b>Email:</b> lubasainvestment@gmail.com', '📘 <b>Facebook:</b> Link', '🎵 <b>TikTok:</b> Link']
+  },
+  // --- SLIDES 3 TO 10 ---
+  { type: 'image', src: '/images/slide3.jpg', leftTitle: 'QUALITY YOU TRUST', leftList: ['White Chalk', 'Coloured Chalk'], rightTitle: 'BULK ORDERS', rightList: ['3 Quire', '4 Quire'] },
+  { type: 'image', src: '/images/slide4.jpg', leftTitle: 'EXERCISE BOOKS', leftList: ['48 Pages', '96 Pages', '192 Pages'], rightTitle: 'OTHER BOOKS', rightList: ['Artbooks', 'Graphbooks'] },
+  { type: 'image', src: '/images/slide5.jpg', leftTitle: 'BULK ORDERS', leftList: ['For schools', 'For retailers'], rightTitle: 'SUPPLY', rightList: ['Fast delivery', 'Bulk discount'] },
+  { type: 'image', src: '/images/slide6.jpg', leftTitle: 'MADE IN UGANDA', leftList: ['Quality', 'Affordable', 'Reliable'], rightTitle: 'LOCAL', rightList: ['Local materials', 'Expert team'] },
+  { type: 'image', src: '/images/slide7.jpg', leftTitle: 'TRUSTED BY TEACHERS', leftList: ['Smooth writing', 'Long lasting'], rightTitle: 'QUALITY', rightList: ['High standard', 'Careful packing'] },
+  { type: 'image', src: '/images/slide8.jpg', leftTitle: 'OFFICE SUPPLIES', leftList: ['Notepads', 'Counter Books'], rightTitle: 'SIZES', rightList: ['3 Quire', '4 Quire'] },
+  { type: 'image', src: '/images/slide9.jpg', leftTitle: 'GRAPHBOOKS', leftList: ['Graph pages', 'Blank pages'], rightTitle: 'FOR ART', rightList: ['Technical drawing', 'Art classes'] },
+  { type: 'image', src: '/images/slide10.jpg', leftTitle: 'CONTACT US', leftList: ['Bulk discount', 'Fast delivery'], rightTitle: 'ORDER NOW', rightList: ['Get a quote', 'Talk to us'] },
+  // --- 4 VIDEOS ---
+  { type: 'video', src: '/images/video1.mp4', leftTitle: 'EXTRA SUCCESS CHALK', leftList: ['High quality', 'Dust controlled', 'Made locally'], rightTitle: 'WATCH', rightList: ['Our process', 'Our factory'] },
+  { type: 'video', src: '/images/video2.mp4', leftTitle: 'PRODUCTION', leftList: ['Quality control', 'Local materials', 'Expert team'], rightTitle: 'FACTORY', rightList: ['See our team', 'See our machines'] },
+  { type: 'video', src: '/images/video3.mp4', leftTitle: 'DELIVERY', leftList: ['Fast delivery', 'Bulk orders', 'Reliable service'], rightTitle: 'SHIPPING', rightList: ['Across Uganda', 'On time'] },
+  { type: 'video', src: '/images/video4.mp4', leftTitle: 'PACKAGING', leftList: ['Secure', 'Clean', 'Ready'], rightTitle: 'READY', rightList: ['For schools', 'For shops'] }
+];
+---
+<BaseLayout title="Home">
+  <section class="relative bg-black flex flex-col md:flex-row h-auto md:h-[600px]">
+    <!-- LEFT SIDE BAR -->
+    <div class="w-full md:w-[320px] bg-black p-6 md:p-8 flex flex-col justify-center border-r border-slate-800 z-20 relative">
+      <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+      <div class="relative h-[350px] mt-4 ml-10">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <div class="inline-block self-start rounded bg-yellow-500 px-3 py-1 text-xs font-extrabold text-black mb-4 uppercase">Extra Success Chalk</div>
+            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">{slide.leftTitle}</h1>
+            <ul class="space-y-2 text-white text-sm font-medium">
+              {slide.leftList.map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span>{item}</span></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="w-full md:flex-1 relative h-[350px] md:h-full bg-black">
+      <div class="slider-container absolute inset-0 overflow-hidden">
+        {slides.map((slide, index) => (
+          <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
+            {slide.type === 'video' ? (
+              <video src={slide.src} preload="auto" muted playsinline class="main-media w-full h-full object-cover"></video>
+            ) : (
+              <img src={slide.src} alt="Slide" class="main-media w-full h-full object-cover" />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE BAR -->
+    <div class="w-full md:w-[320px] bg-black p-6 md:p-8 flex flex-col justify-center border-l border-slate-800 z-20 relative">
+      <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      </button>
+      <div class="relative h-[350px] mt-4 mr-10">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-right ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <h2 class="text-2xl font-extrabold leading-tight text-yellow-500 mb-4">{slide.rightTitle}</h2>
+            <ul class="space-y-3 text-white text-sm font-medium">
+              {slide.rightList.map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="bg-brand-800 border-t border-brand-700 relative z-30 shadow-md">
+    <div class="mx-auto max-w-6xl px-4 flex flex-wrap justify-center md:justify-start text-sm font-medium text-white">
+      <a href="/contact" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Place Order</a>
+      <a href="/about" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">About Us</a>
+      <a href="/products" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Chalk Products</a>
+      <a href="/products" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Books & Stationery</a>
+      <a href="/contact" class="px-5 py-4 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Contact Us</a>
+    </div>
+  </div>
+
+  <section class="mx-auto max-w-6xl px-4 py-20">
+    <h2 class="text-center text-3xl font-extrabold text-slate-900 uppercase tracking-tight">Our Full Product Range</h2>
+    <div class="mx-auto mt-2 h-1 w-20 bg-yellow-500 mb-10"></div>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {products.map(p => (
+        <div class="rounded-xl border border-slate-200 bg-white p-6 transition hover:border-brand-500 hover:shadow-xl group">
+          <div class="text-4xl bg-brand-50 inline-block p-3 rounded-lg group-hover:bg-yellow-100 transition">{p.icon}</div>
+          <h3 class="mt-4 font-bold text-slate-900">{p.title}</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-brand-50 border-y border-brand-100">
+    <div class="mx-auto max-w-6xl px-4 py-16 text-center">
+      <h2 class="text-3xl font-bold text-brand-900">Need supplies for your school or office?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-slate-600">Get in touch for pricing, bulk orders and reliable delivery across the region.</p>
+      <a href="/contact" class="mt-6 inline-block rounded-lg bg-brand-600 px-8 py-3 font-bold text-white transition hover:bg-brand-800 shadow-lg">Place Your Order Now</a>
+    </div>
+  </section>
+
+  <script>
+    let items = document.querySelectorAll('.slide-item');
+    let textsLeft = document.querySelectorAll('.slide-text-left');
+    let textsRight = document.querySelectorAll('.slide-text-right');
+    let currentSlide = 0;
+    let slideTimeout;
+    document.querySelectorAll('video').forEach(v => v.load());
+    function showSlide(index) {
+      items.forEach(item => item.classList.remove('active'));
+      textsLeft.forEach(text => text.classList.remove('active'));
+      textsRight.forEach(text => text.classList.remove('active'));
+      currentSlide = (index + items.length) % items.length;
+      items[currentSlide].classList.add('active');
+      textsLeft[currentSlide].classList.add('active');
+      textsRight[currentSlide].classList.add('active');
+      document.querySelectorAll('video').forEach(v => { v.pause(); v.currentTime = 0; });
+      let currentItem = items[currentSlide];
+      if (currentItem.getAttribute('data-type') === 'video') {
+        let video = currentItem.querySelector('.main-media');
+        video.play().catch(e => console.log("Video error: ", e));
+        video.onended = () => { nextSlide(); };
+      } else {
+        clearTimeout(slideTimeout);
+        slideTimeout = setTimeout(() => { nextSlide(); }, 8000); 
+      }
+    }
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+    document.getElementById('nextBtn').addEventListener('click', () => { clearTimeout(slideTimeout); nextSlide(); });
+    document.getElementById('prevBtn').addEventListener('click', () => { clearTimeout(slideTimeout); prevSlide(); });
+    if (items.length > 0) { showSlide(0); }
+  </script>
+  <style>
+    .slide-item, .slide-text-left, .slide-text-right { opacity: 0; transition: opacity 0.8s ease-in-out; pointer-events: none; }
+    .slide-item.active, .slide-text-left.active, .slide-text-right.active { opacity: 1; pointer-events: auto; }
+  </style>
+</BaseLayout>
+File 2: src/layouts/BaseLayout.astro (The Header & Footer)
+astro
+---
+import '../styles/global.css';
+interface Props { title: string; description?: string; }
+const { title, description = "LUBASA Investments and Company Limited." } = Astro.props;
+const year = new Date().getFullYear();
+const nav = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Products', href: '/products' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Contact', href: '/contact' },
+];
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | LUBASA Investments</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="flex min-h-screen flex-col bg-slate-50">
+    <div class="bg-white border-b border-slate-200 hidden md:block">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-2">
+        <a href="/" class="flex items-center gap-3">
+          <img src="/images/logo.jpg" alt="LUBASA Logo" class="h-12 w-auto object-contain" />
+          <span class="font-bold text-brand-700 text-xl tracking-tight">LUBASA INVESTMENTS</span>
+        </a>
+        <div class="flex items-center gap-4 text-xs font-medium text-slate-600">
+          <a href="#" class="hover:text-brand-600">Sitemap</a>
+          <span>|</span>
+          <a href="/contact" class="hover:text-brand-600">Contact Us</a>
+          <span>|</span>
+          <a href="#" class="hover:text-brand-600">Staff Login</a>
+        </div>
+      </div>
+    </div>
+    <header class="bg-brand-700 text-white shadow-md">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-1 md:py-0">
+        <a href="/" class="md:hidden flex items-center gap-2 py-2">
+          <img src="/images/logo.jpg" alt="LUBASA Logo" class="h-8 w-auto bg-white rounded p-1" />
+          <span class="font-bold text-sm">LUBASA</span>
+        </a>
+        <ul class="hidden md:flex flex-1">
+          {nav.map(item => (
+            <li>
+              <a href={item.href} class:list={["block px-5 py-4 text-sm font-semibold transition border-b-4", path === item.href ? "border-white bg-brand-800" : "border-transparent hover:bg-brand-600"]}>{item.name}</a>
+            </li>
+          ))}
+        </ul>
+        <details class="md:hidden relative">
+          <summary class="cursor-pointer list-none p-2">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+          </summary>
+          <ul class="absolute right-0 top-10 z-50 w-48 space-y-1 rounded-md bg-white p-2 shadow-lg border border-slate-200 text-slate-700">
+            {nav.map(item => (
+              <li><a href={item.href} class="block rounded px-4 py-2 text-sm font-medium hover:bg-brand-50 hover:text-brand-700">{item.name}</a></li>
+            ))}
+          </ul>
+        </details>
+      </div>
+    </header>
+    <main class="flex-1"><slot /></main>
+    <footer class="mt-16 bg-slate-900 text-slate-300">
+      <div class="mx-auto grid max-w-6xl gap-8 px-4 py-12 md:grid-cols-4">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-4">
+            <img src="/images/logo.jpg" alt="LUBASA Logo" class="h-10 w-auto bg-white rounded p-1" />
+            <p class="text-lg font-bold text-white">LUBASA INVESTMENTS</p>
+          </div>
+          <p class="text-sm max-w-sm">Manufacturers & suppliers of Extra Success Chalk and quality stationery for schools and offices in Uganda.</p>
+        </div>
+        <div>
+          <p class="font-bold text-white uppercase tracking-wider text-sm mb-4">Quick Links</p>
+          <ul class="space-y-2 text-sm">
+            {nav.map(item => <li><a href={item.href} class="hover:text-white transition">{item.name}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <p class="font-bold text-white uppercase tracking-wider text-sm mb-4">Contact Us</p>
+          <ul class="space-y-2 text-sm">
+            <li>Email: lubasainvestment@gmail.com</li>
+            <li>Phone: 0786 610907</li>
+            <li>Location: Uganda</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        © {year} LUBASA Investments and Company Limited. All rights reserved.
+      </div>
+    </footer>
+  </body>
+</html>

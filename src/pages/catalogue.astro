@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Our Catalogue">
+  <section class="bg-brand-700 text-white relative">
+    <div class="relative mx-auto max-w-6xl px-4 py-16">
+      <h1 class="text-4xl font-extrabold mb-4">Company Catalogue</h1>
+      <p class="text-brand-100 max-w-2xl text-lg mb-6">
+        Browse our full list of products and services. You can download this list and use it to place your order.
+      </p>
+      <a href="/LUBASA_Catalogue.pdf" download class="inline-block bg-yellow-500 hover:bg-yellow-400 text-brand-900 font-bold px-6 py-3 rounded-lg shadow-lg transition">
+        ⬇ Download Full Catalogue (PDF)
+      </a>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 py-16 grid gap-12 md:grid-cols-2">
+    
+    <!-- Products List -->
+    <div>
+      <h2 class="text-3xl font-extrabold text-brand-800 mb-6 border-b pb-2">Our Products</h2>
+      
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Extra Success Chalk</h3>
+          <ul class="text-slate-700 space-y-1">
+            <li>• White Chalk (3000 sticks carton)</li>
+            <li>• White Chalk (6000 sticks carton)</li>
+            <li>• Coloured Chalk (3000 sticks carton)</li>
+            <li>• Coloured Chalk (6000 sticks carton)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">General Stationery Supplies</h3>
+          <p class="text-slate-600 text-sm mb-2">We supply all school and office stationery, including:</p>
+          <ul class="text-slate-700 space-y-1 grid grid-cols-2">
+            <li>• Exercise Books</li>
+            <li>• Counter Books</li>
+            <li>• Notepads & Artbooks</li>
+            <li>• Graphbooks</li>
+            <li>• Printers & Toners</li>
+            <li>• Pens & Pencils</li>
+            <li>• Files & Folders</li>
+            <li>• Reams of Paper</li>
+            <li>• Staplers & Punches</li>
+            <li>• Whiteboards & Markers</li>
+            <li>• And much more...</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Services List -->
+    <div>
+      <h2 class="text-3xl font-extrabold text-brand-800 mb-6 border-b pb-2">Our Services</h2>
+      
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Professional & Digital Services</h3>
+          <ul class="text-slate-700 space-y-1">
+            <li>• Printing & Photocopying</li>
+            <li>• Graphic Designing & Branding</li>
+            <li>• Web Designing & Programming</li>
+            <li>• Business Accounting Systems</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Consultancy & Logistics</h3>
+          <ul class="text-slate-700 space-y-1">
+            <li>• Business Registrations & Trade Marks</li>
+            <li>• UNBS Q Marks Certification</li>
+            <li>• Driving Permits & Passports Processing</li>
+            <li>• Transportation & Delivery</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-900 mb-2">Other Ventures</h3>
+          <ul class="text-slate-700 space-y-1">
+            <li>• Real Estate</li>
+            <li>• Tourists Guidance</li>
+            <li>• General Supplies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</BaseLayout>

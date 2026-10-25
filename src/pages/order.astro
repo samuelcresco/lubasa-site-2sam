@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Place Order">
+  <section class="bg-brand-700 text-white relative">
+    <div class="relative mx-auto max-w-6xl px-4 py-16">
+      <h1 class="text-4xl font-extrabold mb-4">Place Your Order</h1>
+      <p class="text-brand-100 max-w-2xl text-lg">
+        Please use our <a href="/catalogue" class="underline text-yellow-300">Catalogue</a> to find the products and services you need, then fill out the form below.
+      </p>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-4xl px-4 py-16">
+    <form action="mailto:lubasainvestments@gmail.com" method="POST" enctype="text/plain" class="space-y-10 bg-white p-8 rounded-xl border border-slate-200 shadow-sm">
+      
+      <!-- Customer Details -->
+      <div>
+        <h2 class="text-2xl font-bold text-brand-800 mb-4 border-b pb-2">1. Your Details</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Your Name / School / Company</label>
+            <input type="text" name="Customer_Name" required class="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-brand-500 focus:outline-none" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700">Phone Number</label>
+            <input type="tel" name="Phone_Number" required class="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-brand-500 focus:outline-none" />
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700">Delivery Location</label>
+            <input type="text" name="Delivery_Location" required class="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-brand-500 focus:outline-none" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Details -->
+      <div>
+        <h2 class="text-2xl font-bold text-brand-800 mb-4 border-b pb-2">2. What would you like to order?</h2>
+        <p class="text-sm text-slate-500 mb-4">List the products and/or services (with quantities) you want here.</p>
+        <textarea name="Order_Details" rows="6" required placeholder="Example:&#10;- 5 Cartons of White Chalk (3000 sticks)&#10;- 2 Cartons of Coloured Chalk (6000 sticks)&#10;- 50 Exercise Books (96 pages)&#10;- Graphic design for a school banner" class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-brand-500 focus:outline-none"></textarea>
+      </div>
+
+      <!-- Additional Notes -->
+      <div>
+        <h2 class="text-2xl font-bold text-brand-800 mb-4 border-b pb-2">3. Additional Notes</h2>
+        <textarea name="Notes" rows="3" placeholder="Any special requests, deadlines, or delivery instructions..." class="w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-brand-500 focus:outline-none"></textarea>
+      </div>
+
+      <button type="submit" class="w-full rounded-lg bg-brand-600 px-6 py-4 text-lg font-bold text-white transition hover:bg-brand-700 shadow-md">
+        Submit Order Request
+      </button>
+    </form>
+  </section>
+</BaseLayout>

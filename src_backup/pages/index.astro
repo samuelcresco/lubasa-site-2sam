@@ -1,0 +1,351 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// ==========================================
+// 1. EDIT YOUR PRODUCTS HERE
+// ==========================================
+const products = [
+  { title: 'Extra Success Chalk (White)', desc: 'Smooth, dust-controlled white chalk for classrooms.', icon: '🖍️' },
+  { title: 'Extra Success Chalk (Coloured)', desc: 'Bright, long-lasting coloured chalk.', icon: '🎨' },
+  { title: 'Exercise Books (48 Pages)', desc: 'Standard 48-page exercise books.', icon: '📒' },
+  { title: 'Exercise Books (96 Pages)', desc: 'Standard 96-page exercise books.', icon: '📒' },
+  { title: 'Exercise Books (192 Pages)', desc: 'Large 192-page exercise books.', icon: '📒' },
+  { title: 'Counter Books (3 Quire)', desc: 'Durable 3 quire counter books.', icon: '📗' },
+  { title: 'Counter Books (4 Quire)', desc: 'Durable 4 quire counter books.', icon: '📗' },
+  { title: 'Notepads', desc: 'Quality notepads for daily use.', icon: '📝' },
+  { title: 'Artbooks', desc: 'Blank pages for drawing and art.', icon: '🎨' },
+  { title: 'Graphbooks', desc: 'Grid pages for math and technical drawing.', icon: '📐' },
+];
+
+// ==========================================
+// 2. EDIT YOUR SLIDES AND TEXT HERE
+// ==========================================
+const slides = [
+  // --- SLIDE 1 ---
+  { 
+    type: 'image', 
+    src: '/images/slide1.jpg', 
+    leftTitle: 'Reasons why Extra Success chalk', 
+    leftList: ['Durable', 'Dustless', 'Cheap/affordable', 'Approved by teachers'],
+    rightTitle: 'Packaging',
+    rightList: ['150 sticks in a box', '20 boxes in a carton', '3000 sticks in a carton', 'Durable small & big boxes']
+  },
+
+  // --- SLIDE 2 ---
+  { 
+    type: 'image', 
+    src: '/images/slide2.jpg', 
+    leftTitle: 'Deliveries', 
+    leftList: [
+      'From factory premises to town free', 
+      'Customer faces on from town to own destination', 
+      'Reasonable payment for Kampala & Metropolitan', 
+      'Instant deliveries on orders', 
+      'Takes 1-2 days for up country customers'
+    ],
+    rightTitle: 'Contacts',
+    rightList: [
+      '<b>Office:</b> 0786 610907',
+      '<b>WhatsApp:</b> 0702944478 / 0784256007',
+      '<b>Email:</b> lubasainvestment@gmail.com',
+      '<b>Facebook:</b> Link',
+      '<b>TikTok:</b> Link'
+    ]
+  },
+
+  // --- SLIDE 3 ---
+  { 
+    type: 'image', 
+    src: '/images/slide3.jpg', 
+    leftTitle: 'Payments', 
+    leftList: [
+      'Cash payments',
+      'Bank payment: <span class="block text-xs text-slate-300 mt-1">• Centenary Bank: Account number 3200380474, Branch Entebbe Road<br>• Equity Bank: Account number 1003201465926</span>',
+      'Mobile money: <span class="block text-xs text-slate-300 mt-1">• Airtel: 0702944478<br>• MTN: 0786610907</span>'
+    ],
+    rightTitle: 'Terms of payment',
+    rightList: [
+      'Cash payment in Kampala & metropolitan',
+      'Credit sales only 2 weeks given',
+      'Bulky orders, 50% deposit balance on delivery',
+      'Up country and exports use Bank or mobile money',
+      'Proof of payment sent on email incase of bank'
+    ]
+  },
+
+  // --- SLIDE 4 ---
+  { 
+    type: 'image', 
+    src: '/images/slide4.jpg', 
+    leftTitle: 'Our Core Values', 
+    leftList: [
+      '<b>Quality & Quantity</b> <span class="block text-xs text-slate-300 mt-0.5">High quality products and in plenty.</span>',
+      '<b>Listen</b> <span class="block text-xs text-slate-300 mt-0.5">Listening & processing customer needs.</span>',
+      '<b>Effectiveness</b> <span class="block text-xs text-slate-300 mt-0.5">Serve customers at appropriate time.</span>',
+      '<b>Flexibility</b> <span class="block text-xs text-slate-300 mt-0.5">Everywhere, everywhere.</span>',
+      '<b>Global Competitiveness</b> <span class="block text-xs text-slate-300 mt-0.5">Maintain international manufacturing and packaging standards.</span>'
+    ],
+    rightTitle: 'Our Core Principles',
+    rightList: [
+      '<b>Uncompromised standards</b> <span class="block text-xs text-slate-300 mt-0.5">Ensure quality control in all our products.</span>',
+      '<b>Customer Interest</b> <span class="block text-xs text-slate-300 mt-0.5">We adjust to customer feedback.</span>',
+      '<b>Respect</b> <span class="block text-xs text-slate-300 mt-0.5">Ensure orders are processed and delivered on time.</span>',
+      '<b>Adaptable logistics</b> <span class="block text-xs text-slate-300 mt-0.5">Cash payment methods and the products can reach everywhere.</span>',
+      '<b>Cross Border Reliability</b> <span class="block text-xs text-slate-300 mt-0.5">Clear documentation of our products & packaging.</span>'
+    ]
+  },
+
+  // --- SLIDES 5 TO 10 ---
+  { type: 'image', src: '/images/slide5.jpg', leftTitle: 'BULK ORDERS', leftList: ['For schools', 'For retailers'], rightTitle: 'SUPPLY', rightList: ['Fast delivery', 'Bulk discount'] },
+  { type: 'image', src: '/images/slide6.jpg', leftTitle: 'MADE IN UGANDA', leftList: ['Quality', 'Affordable', 'Reliable'], rightTitle: 'LOCAL', rightList: ['Local materials', 'Expert team'] },
+  { type: 'image', src: '/images/slide7.jpg', leftTitle: 'TRUSTED BY TEACHERS', leftList: ['Smooth writing', 'Long lasting'], rightTitle: 'QUALITY', rightList: ['High standard', 'Careful packing'] },
+  { type: 'image', src: '/images/slide8.jpg', leftTitle: 'OFFICE SUPPLIES', leftList: ['Notepads', 'Counter Books'], rightTitle: 'SIZES', rightList: ['3 Quire', '4 Quire'] },
+  { type: 'image', src: '/images/slide9.jpg', leftTitle: 'GRAPHBOOKS', leftList: ['Graph pages', 'Blank pages'], rightTitle: 'FOR ART', rightList: ['Technical drawing', 'Art classes'] },
+  { type: 'image', src: '/images/slide10.jpg', leftTitle: 'CONTACT US', leftList: ['Bulk discount', 'Fast delivery'], rightTitle: 'ORDER NOW', rightList: ['Get a quote', 'Talk to us'] },
+  
+  // --- 4 VIDEOS ---
+  { type: 'video', src: '/images/video1.mp4', leftTitle: 'EXTRA SUCCESS CHALK', leftList: ['High quality', 'Dust controlled', 'Made locally'], rightTitle: 'WATCH', rightList: ['Our process', 'Our factory'] },
+  { type: 'video', src: '/images/video2.mp4', leftTitle: 'PRODUCTION', leftList: ['Quality control', 'Local materials', 'Expert team'], rightTitle: 'FACTORY', rightList: ['See our team', 'See our machines'] },
+  { type: 'video', src: '/images/video3.mp4', leftTitle: 'DELIVERY', leftList: ['Fast delivery', 'Bulk orders', 'Reliable service'], rightTitle: 'SHIPPING', rightList: ['Across Uganda', 'On time'] },
+  { type: 'video', src: '/images/video4.mp4', leftTitle: 'PACKAGING', leftList: ['Secure', 'Clean', 'Ready'], rightTitle: 'READY', rightList: ['For schools', 'For shops'] }
+];
+---
+<BaseLayout title="Home">
+  
+  <section class="relative bg-black flex flex-col md:flex-row h-auto md:h-[600px]">
+    
+    <!-- LEFT SIDE BAR -->
+    <div class="w-full md:w-[320px] bg-black p-6 md:p-8 flex flex-col justify-center border-r border-slate-800 z-20 relative">
+      
+      <!-- LEFT ARROW (MIDDLE) -->
+      <button id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+
+      <!-- TEXT UP (TOP) -->
+      <div class="relative h-[380px] mt-4 ml-10">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <h1 class="text-2xl font-extrabold leading-tight text-yellow-500 mb-4">
+              {slide.leftTitle}
+            </h1>
+            <ul class="space-y-2 text-white text-sm font-medium">
+              {slide.leftList.map(item => (
+                <li class="flex items-start gap-2">
+                  <span class="text-yellow-400 font-bold mt-1">✓</span> 
+                  <span set:html={item}></span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CENTER (Clean Media) -->
+    <div class="w-full md:flex-1 relative h-[350px] md:h-full bg-black">
+      <div class="slider-container absolute inset-0 overflow-hidden">
+        {slides.map((slide, index) => (
+          <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
+            {slide.type === 'video' ? (
+              <video src={slide.src} preload="auto" muted playsinline class="main-media w-full h-full object-cover"></video>
+            ) : (
+              <img src={slide.src} alt="Slide" class="main-media w-full h-full object-cover" />
+            )}
+          </div>
+        ))}
+      </div>
+
+      <!-- PAUSE / PLAY BUTTON (CENTERED BOTTOM) -->
+      <button id="playPauseBtn" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 50; background-color: rgba(0,0,0,0.6); color: white; padding: 10px; border-radius: 50%; border: 2px solid white; cursor: pointer; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px);">
+        <!-- Pause Icon (shows first) -->
+        <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width: 24px; height: 24px;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
+        </svg>
+        <!-- Play Icon (hidden first) -->
+        <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" style="width: 24px; height: 24px; display: none;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z" />
+        </svg>
+      </button>
+
+    </div>
+
+    <!-- RIGHT SIDE BAR -->
+    <div class="w-full md:w-[320px] bg-black p-6 md:p-8 flex flex-col justify-center border-l border-slate-800 z-20 relative">
+      
+      <!-- RIGHT ARROW (MIDDLE) -->
+      <button id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-slate-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      </button>
+
+      <!-- TEXT UP (TOP) -->
+      <div class="relative h-[380px] mt-4 mr-10">
+        {slides.map((slide, index) => (
+          <div class={`slide-text-right ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
+            <h2 class="text-2xl font-extrabold leading-tight text-yellow-500 mb-4">
+              {slide.rightTitle}
+            </h2>
+            <ul class="space-y-3 text-white text-sm font-medium">
+              {slide.rightList.map(item => (
+                <li class="flex items-start gap-2">
+                  <span class="text-yellow-400 font-bold mt-1">✓</span> 
+                  <span set:html={item}></span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Quick Links Bar -->
+  <div class="bg-brand-800 border-t border-brand-700 relative z-30 shadow-md">
+    <div class="mx-auto max-w-6xl px-4 flex flex-wrap justify-center md:justify-start text-sm font-medium text-white">
+      <a href="/contact" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Place Order</a>
+      <a href="/about" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">About Us</a>
+      <a href="/products" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Chalk Products</a>
+      <a href="/products" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Books & Stationery</a>
+      <a href="/contact" class="px-5 py-4 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Product Range -->
+  <section class="mx-auto max-w-6xl px-4 py-20">
+    <h2 class="text-center text-3xl font-extrabold text-slate-900 uppercase tracking-tight">Our Full Product Range</h2>
+    <div class="mx-auto mt-2 h-1 w-20 bg-yellow-500 mb-10"></div>
+    
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {products.map(p => (
+        <div class="rounded-xl border border-slate-200 bg-white p-6 transition hover:border-brand-500 hover:shadow-xl group">
+          <div class="text-4xl bg-brand-50 inline-block p-3 rounded-lg group-hover:bg-yellow-100 transition">{p.icon}</div>
+          <h3 class="mt-4 font-bold text-slate-900">{p.title}</h3>
+          <p class="mt-2 text-sm text-slate-600 leading-relaxed">{p.desc}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-brand-50 border-y border-brand-100">
+    <div class="mx-auto max-w-6xl px-4 py-16 text-center">
+      <h2 class="text-3xl font-bold text-brand-900">Need supplies for your school or office?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-slate-600">Get in touch for pricing, bulk orders and reliable delivery across the region.</p>
+      <a href="/contact" class="mt-6 inline-block rounded-lg bg-brand-600 px-8 py-3 font-bold text-white transition hover:bg-brand-800 shadow-lg">Place Your Order Now</a>
+    </div>
+  </section>
+
+  <!-- Slider Logic -->
+  <script>
+    let items = document.querySelectorAll('.slide-item');
+    let textsLeft = document.querySelectorAll('.slide-text-left');
+    let textsRight = document.querySelectorAll('.slide-text-right');
+    let currentSlide = 0;
+    let slideTimeout;
+    let isPaused = false;
+
+    document.querySelectorAll('video').forEach(v => v.load());
+
+    function showSlide(index) {
+      items.forEach(item => item.classList.remove('active'));
+      textsLeft.forEach(text => text.classList.remove('active'));
+      textsRight.forEach(text => text.classList.remove('active'));
+      
+      currentSlide = (index + items.length) % items.length;
+      items[currentSlide].classList.add('active');
+      textsLeft[currentSlide].classList.add('active');
+      textsRight[currentSlide].classList.add('active');
+
+      document.querySelectorAll('video').forEach(v => {
+        v.pause();
+        v.currentTime = 0;
+      });
+
+      let currentItem = items[currentSlide];
+      
+      if (currentItem.getAttribute('data-type') === 'video') {
+        let video = currentItem.querySelector('.main-media');
+        if (!isPaused) {
+          video.play().catch(e => console.log("Video error: ", e));
+        }
+        video.onended = () => {
+          if (!isPaused) nextSlide();
+        };
+      } else {
+        clearTimeout(slideTimeout);
+        if (!isPaused) {
+          slideTimeout = setTimeout(() => {
+            nextSlide();
+          }, 8000); 
+        }
+      }
+    }
+
+    function nextSlide() {
+      if (isPaused) return;
+      showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if (isPaused) return;
+      showSlide(currentSlide - 1);
+    }
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (isPaused) return;
+      clearTimeout(slideTimeout);
+      nextSlide();
+    });
+    
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (isPaused) return;
+      clearTimeout(slideTimeout);
+      prevSlide();
+    });
+
+    // PAUSE / PLAY LOGIC
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const playIcon = document.getElementById('playIcon');
+
+    playPauseBtn.addEventListener('click', () => {
+      isPaused = !isPaused;
+      if (isPaused) {
+        clearTimeout(slideTimeout);
+        let activeVideo = items[currentSlide].querySelector('video');
+        if (activeVideo) activeVideo.pause();
+        
+        pauseIcon.style.display = 'none';
+        playIcon.style.display = 'block';
+      } else {
+        pauseIcon.style.display = 'block';
+        playIcon.style.display = 'none';
+        
+        let activeVideo = items[currentSlide].querySelector('video');
+        if (activeVideo) {
+          activeVideo.play().catch(e => console.log("Video error: ", e));
+        } else {
+          clearTimeout(slideTimeout);
+          slideTimeout = setTimeout(() => { nextSlide(); }, 8000);
+        }
+      }
+    });
+
+    if (items.length > 0) {
+      showSlide(0);
+    }
+  </script>
+
+  <style>
+    .slide-item, .slide-text-left, .slide-text-right {
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      pointer-events: none;
+    }
+    .slide-item.active, .slide-text-left.active, .slide-text-right.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</BaseLayout>

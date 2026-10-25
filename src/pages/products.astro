@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Products & Services">
+  <!-- Header Section -->
+  <section class="bg-brand-700 text-white relative">
+    <img src="/images/slide2.jpg" alt="Products" class="absolute inset-0 w-full h-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-6xl px-4 py-16">
+      <h1 class="text-4xl font-extrabold mb-4">Our Products & Services</h1>
+      <p class="text-brand-100 max-w-2xl text-lg">
+        From manufacturing the best chalk in Uganda to providing comprehensive business and stationery solutions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="mx-auto max-w-6xl px-4 py-16 space-y-12">
+    
+    <!-- 1. Extra Success Chalk -->
+    <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm border-l-8 border-l-yellow-500">
+      <h2 class="text-3xl font-extrabold text-brand-800 mb-6 uppercase tracking-tight">Extra Success Chalk</h2>
+      <div class="grid gap-6 sm:grid-cols-2">
+        <div class="bg-slate-50 p-6 rounded-lg border border-slate-100">
+          <h3 class="font-bold text-lg text-slate-900 mb-2">3000 Sticks Carton</h3>
+          <p class="text-slate-600">Available in both White and Coloured.</p>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-lg border border-slate-100">
+          <h3 class="font-bold text-lg text-slate-900 mb-2">6000 Sticks Carton</h3>
+          <p class="text-slate-600">Available in both White and Coloured.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2">
+      <!-- 2. Services -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm border-t-4 border-t-brand-600">
+        <h2 class="text-2xl font-extrabold text-brand-800 mb-4 uppercase tracking-tight">Services</h2>
+        <ul class="space-y-3 text-slate-700">
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Printing</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Branding</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Transportation</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Tourists Guidance</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Real Estate</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Web Designing</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Programming, etc.</li>
+        </ul>
+      </div>
+
+      <!-- 3. General Stationery Supplies -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm border-t-4 border-t-brand-600">
+        <h2 class="text-2xl font-extrabold text-brand-800 mb-4 uppercase tracking-tight">General Stationery Supplies</h2>
+        <ul class="space-y-3 text-slate-700">
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Sets</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Books</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Printers</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Files</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Pens</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Pencils, etc.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. Business Consultants -->
+    <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm border-l-8 border-l-brand-800">
+      <h2 class="text-2xl font-extrabold text-brand-800 mb-4 uppercase tracking-tight">Business Consultants</h2>
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul class="space-y-3 text-slate-700">
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Business Registrations</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Trade Marks</li>
+        </ul>
+        <ul class="space-y-3 text-slate-700">
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> UNBS Q Marks</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Business Accounting Systems</li>
+        </ul>
+        <ul class="space-y-3 text-slate-700">
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Driving Permits</li>
+          <li class="flex items-center gap-3"><span class="text-brand-500 font-bold">✓</span> Passports, etc.</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+</BaseLayout>

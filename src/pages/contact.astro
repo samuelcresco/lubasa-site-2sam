@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Contact Us">
+  <!-- Header Section -->
+  <section class="bg-brand-700 text-white relative">
+    <img src="/images/slide3.jpg" alt="Contact" class="absolute inset-0 w-full h-full object-cover opacity-20" />
+    <div class="relative mx-auto max-w-6xl px-4 py-16">
+      <h1 class="text-4xl font-extrabold mb-4">Contact Us</h1>
+      <p class="text-brand-100 max-w-2xl text-lg">
+        Get in touch for orders, inquiries, or consultations. We are here to serve you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="mx-auto max-w-6xl px-4 py-16 grid gap-8 md:grid-cols-2">
+    
+    <!-- Left Column: Contact Info & Location -->
+    <div class="space-y-8">
+      <!-- Contact Details -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm border-t-4 border-t-brand-600">
+        <h2 class="text-2xl font-bold text-brand-800 mb-6 uppercase tracking-tight">Get In Touch</h2>
+        <ul class="space-y-4 text-slate-700">
+          <li class="flex items-start gap-3">
+            <span class="text-brand-500 font-bold mt-1">✉️</span>
+            <div>
+              <p class="font-semibold text-slate-900">Email</p>
+              <p>lubasainvestments@gmail.com</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-brand-500 font-bold mt-1">📞</span>
+            <div>
+              <p class="font-semibold text-slate-900">Telephone</p>
+              <p>+256 702944948</p>
+              <p>+256 786610907</p>
+              <p>+256 787578520</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-brand-500 font-bold mt-1">📍</span>
+            <div>
+              <p class="font-semibold text-slate-900">Main Branch Location</p>
+              <p>Makindye, Salaama Rd, near Kiruddu Hospital.</p>
+              <p class="text-sm text-slate-500 mt-1">(10km from Kampala City Center)</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Payment Details -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm border-l-8 border-l-yellow-500">
+        <h2 class="text-2xl font-bold text-brand-800 mb-6 uppercase tracking-tight">Payment Details</h2>
+        
+        <div class="space-y-6 text-slate-700">
+          <div>
+            <h3 class="font-bold text-slate-900 border-b border-slate-200 pb-2 mb-2">Bank Transfers</h3>
+            <div class="mb-4">
+              <p class="font-semibold text-brand-700">Centenary Bank</p>
+              <p>Account Name: Kabenge Samuel</p>
+              <p>Account Number: 3200380474</p>
+              <p>Branch: Entebbe Road</p>
+            </div>
+            <div>
+              <p class="font-semibold text-brand-700">Equity Bank</p>
+              <p>Account Name: Lubasa Investments and Company Limited</p>
+              <p>Account Number: 1003201465926</p>
+              <p>Branch: Katwe</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-slate-900 border-b border-slate-200 pb-2 mb-2">Mobile Money</h3>
+            <p><strong class="text-brand-700">Airtel:</strong> +256 702944948</p>
+            <p><strong class="text-brand-700">MTN:</strong> +256 786610907</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Contact Form -->
+    <div class="rounded-xl border border-slate-200 bg-white p-8 shadow-sm">
+      <h2 class="text-2xl font-bold text-brand-800 mb-6 uppercase tracking-tight">Send Us a Message</h2>
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-700" for="name">Name</label>
+          <input id="name" name="name" required class="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700" for="email">Email</label>
+          <input id="email" type="email" name="email" required class="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700" for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required class="mt-1 w-full rounded-lg border border-slate-300 px-4 py-2 focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-200"></textarea>
+        </div>
+        <button type="submit" class="w-full rounded-lg bg-brand-600 px-6 py-3 font-bold text-white transition hover:bg-brand-700 shadow-md">Send Message</button>
+      </form>
+    </div>
+
+  </section>
+</BaseLayout>
