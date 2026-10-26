@@ -331,20 +331,20 @@ const slides = [
       </button>
     </div>
 
-    <!-- LEFT SIDE BAR (Desktop Only) -->
-    <div class="hidden md:flex md:w-[320px] bg-brand-600 p-6 md:p-8 flex-col justify-center border-r border-brand-700 z-20 relative order-1">
-      <button id="prevBtn" class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-brand-700 hover:bg-white hover:text-brand-600 text-white p-2 rounded-full transition shadow-lg">
+   <!-- LEFT SIDE BAR (Desktop Only) -->
+    <div class="hidden md:flex md:w-[320px] bg-blue-600/60 backdrop-blur-sm p-6 md:p-8 flex-col justify-center border-r border-blue-500/50 z-20 relative order-1">
+      <button id="prevBtn" class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-blue-700/80 hover:bg-white hover:text-blue-600 text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
       </button>
       <div class="relative h-[350px] mt-4 ml-10">
         {slides.map((slide, index) => (
           <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
-            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">
+            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4 drop-shadow-md">
               {slide.leftTitle}
             </h1>
-            <ul class="space-y-2 text-white text-sm font-medium">
+            <ul class="space-y-2 text-white text-sm font-medium drop-shadow-md">
               {slide.leftList.map(item => (
-                <li class="flex items-start gap-2"><span class="text-white font-bold mt-1">✓</span> <span set:html={item}></span></li>
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
           </div>
@@ -352,29 +352,29 @@ const slides = [
       </div>
     </div>
 
- <!-- RIGHT SIDE BAR (Desktop Only) -->
-    <div class="hidden md:flex md:w-[320px] bg-brand-600 p-6 md:p-8 flex-col justify-center border-l border-brand-700 z-20 relative order-3">
-      <button id="nextBtn" class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-brand-700 hover:bg-white hover:text-brand-600 text-white p-2 rounded-full transition shadow-lg">
+<!-- RIGHT SIDE BAR (Desktop Only) -->
+    <div class="hidden md:flex md:w-[320px] bg-blue-600/60 backdrop-blur-sm p-6 md:p-8 flex-col justify-center border-l border-blue-500/50 z-20 relative order-3">
+      <button id="nextBtn" class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-blue-700/80 hover:bg-white hover:text-blue-600 text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
       </button>
       <div class="relative h-[350px] mt-4 mr-10">
         {slides.map((slide, index) => (
           <div class={`slide-text-right ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
-            <h2 class="text-2xl font-extrabold leading-tight text-white mb-4">
+            <h2 class="text-2xl font-extrabold leading-tight text-white mb-4 drop-shadow-md">
               {slide.rightTitle}
             </h2>
-            <ul class="space-y-3 text-white text-sm font-medium mb-6">
+            <ul class="space-y-3 text-white text-sm font-medium mb-6 drop-shadow-md">
               {slide.rightList.map(item => (
-                <li class="flex items-start gap-2"><span class="text-white font-bold mt-1">✓</span> <span set:html={item}></span></li>
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
           </div>
         ))}
       </div>
     </div>
+ 
   </section>
-
-  <!-- Quick Links Bar -->
+ <!-- Quick Links Bar -->
   <div class="bg-brand-800 border-t border-brand-700 relative z-30 shadow-md">
     <div class="mx-auto max-w-6xl px-4 flex flex-wrap justify-center md:justify-start text-sm font-medium text-white">
       <a href="/order" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Place Order</a>
