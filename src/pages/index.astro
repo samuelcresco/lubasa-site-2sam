@@ -317,7 +317,7 @@ const slides = [
       </div>
 
       <!-- MOBILE TEXT BOX (Solid blue, scrollable, sits below image) -->
-      <div class="md:hidden w-full bg-brand-800 text-white h-[350px] overflow-y-auto p-5 z-20 relative shadow-[0_10px_15px_-3px_rgba(0,0,0,0.5)]">
+      <div class="md:hidden w-full bg-brand-800 text-white flex-grow overflow-y-auto p-5 z-20 relative shadow-[0_10px_15px_-3px_rgba(0,0,0,0.5)]">
         {slides.map((slide, index) => (
           <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
             
