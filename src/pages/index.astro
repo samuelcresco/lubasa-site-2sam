@@ -289,64 +289,69 @@ const slides = [
   
   <!-- MAIN SLIDER SECTION -->
   <section class="relative bg-black flex flex-col md:flex-row md:h-[600px]">
-    
-    <!-- CENTER (Image/Video) - 100% Clear on Mobile -->
-    <div class="w-full md:flex-1 relative h-[350px] md:h-full bg-black order-1 md:order-2 overflow-hidden">
-      <div class="slider-container absolute inset-0 overflow-hidden">
+        <!-- CENTER (Image/Video) -->
+    <div class="w-full md:flex-1 bg-black order-1 md:order-2 relative flex flex-col h-[75vh] md:h-full md:block">
+      
+      <!-- IMAGE/VIDEO SLIDER (Top Half on Mobile) -->
+      <div class="relative w-full h-[40%] md:h-full shrink-0">
+        <div class="slider-container absolute inset-0 overflow-hidden">
+          {slides.map((slide, index) => (
+            <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
+              {slide.type === 'video' ? (
+                <video src={slide.src} preload="auto" muted playsinline class="main-media w-full h-full object-cover"></video>
+              ) : (
+                <img src={slide.src} alt="Slide" class="main-media w-full h-full object-cover" />
+              )}
+            </div>
+          ))}
+        </div>
+
+        <!-- Mobile Arrows -->
+        <button id="prevBtnMobile" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+        </button>
+        <button id="nextBtnMobile" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+        </button>
+      </div>
+
+      <!-- MOBILE TEXT (Bottom Half on Mobile, Scrollable, Solid Blue) -->
+      <div class="md:hidden w-full h-[60%] bg-brand-800 overflow-y-auto p-5 pb-8 z-20 relative shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.3)]">
         {slides.map((slide, index) => (
-          <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
-            {slide.type === 'video' ? (
-              <video src={slide.src} preload="auto" muted playsinline class="main-media w-full h-full object-cover"></video>
-            ) : (
-              <img src={slide.src} alt="Slide" class="main-media w-full h-full object-cover" />
-            )}
+          <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden text-white`}>
+            
+            <!-- Left Text -->
+            <div class="mb-4">
+              <h2 class="text-yellow-400 font-bold text-lg mb-2">{slide.leftTitle}</h2>
+              <ul class="space-y-2 text-sm text-gray-100">
+                {slide.leftList?.map(item => (
+                  <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Right Text -->
+            <div class="mb-4 pt-4 border-t border-brand-600">
+              <h2 class="text-yellow-400 font-bold text-lg mb-2">{slide.rightTitle}</h2>
+              <ul class="space-y-2 text-sm text-gray-100">
+                {slide.rightList?.map(item => (
+                  <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+                ))}
+              </ul>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex gap-2 mt-6">
+              <a href="/order" class="flex-1 rounded bg-yellow-500 px-3 py-2 text-center text-sm font-bold text-black shadow-md">ORDER</a>
+              <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-white px-3 py-2 text-center text-sm font-bold text-brand-800 shadow-md">CATALOGUE</a>
+            </div>
           </div>
         ))}
       </div>
 
-      <!-- Mobile Arrows (Overlay on image) -->
-      <button id="prevBtnMobile" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
-      </button>
-      <button id="nextBtnMobile" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-      </button>
     </div>
 
-    <!-- MOBILE TEXT BLOCK (Sits neatly below the clear image on phones) -->
-    <div class="md:hidden bg-brand-900 w-full border-b border-brand-700">
-      {slides.map((slide, index) => (
-        <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden p-5 text-white`}>
-          
-          <!-- Left Text -->
-          <div class="mb-4">
-            <h2 class="text-white font-bold text-lg leading-tight mb-2">{slide.leftTitle}</h2>
-            <ul class="space-y-2 text-sm text-blue-100">
-              {slide.leftList?.map(item => (
-                <li class="flex items-start gap-2"><span class="text-brand-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Right Text -->
-          <div class="mb-4 pt-4 border-t border-brand-700">
-            <h2 class="text-white font-bold text-lg leading-tight mb-2">{slide.rightTitle}</h2>
-            <ul class="space-y-2 text-sm text-blue-100">
-              {slide.rightList?.map(item => (
-                <li class="flex items-start gap-2"><span class="text-brand-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
-              ))}
-            </ul>
-          </div>
-
-          <!-- Buttons -->
-          <div class="flex gap-2 mt-6">
-            <a href="/order" class="flex-1 rounded bg-yellow-500 px-4 py-3 text-center text-sm font-bold text-black shadow-md transition hover:bg-yellow-400">PLACE ORDER</a>
-            <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-white px-4 py-3 text-center text-sm font-bold text-brand-800 shadow-md transition hover:bg-gray-100">CATALOGUE</a>
-          </div>
-
-        </div>
-      ))}
-    </div>
+    <!-- LEFT SIDE BAR (Desktop Only) -->
 
     <!-- LEFT SIDE BAR (Desktop Only - Blue Theme) -->
     <div class="hidden md:flex md:w-[320px] bg-brand-900 p-6 md:p-8 flex-col justify-center border-r border-brand-700 z-20 relative order-1">
