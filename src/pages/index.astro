@@ -27,7 +27,7 @@ const slides = [
       'Instant deliveries on orders', 
       'Takes 1-2 days for up country customers'
     ],
-        rightTitle: 'Contacts',
+    rightTitle: 'Contacts',
     rightList: [
       '<b>Office:</b> 0786 610907',
       '<b>WhatsApp:</b> 0702944478 / 0784256007',
@@ -159,7 +159,7 @@ const slides = [
       'Security awakening',
       'Tourism places'
     ],
-        rightTitle: 'REAL ESTATE',
+    rightTitle: 'REAL ESTATE',
     rightList: [
       'Land purchasing',
       'Land selling',
@@ -291,7 +291,7 @@ const slides = [
   <section class="relative bg-black flex flex-col md:flex-row md:h-[600px]">
     
     <!-- CENTER (Image/Video) -->
-    <div class="w-full md:flex-1 relative h-[500px] md:h-full bg-black order-1 md:order-2">
+    <div class="w-full md:flex-1 relative h-[500px] md:h-full bg-black order-1 md:order-2 overflow-hidden">
       <div class="slider-container absolute inset-0 overflow-hidden">
         {slides.map((slide, index) => (
           <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
@@ -303,112 +303,48 @@ const slides = [
           </div>
         ))}
       </div>
-<!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
-      <div class="absolute inset-x-0 bottom-0 top-1/4 z-10 md:hidden flex flex-col justify-end bg-gradient-to-t from-blue-900 via-blue-900/90 to-transparent text-white p-4 pb-6 overflow-y-auto">
+
+      <!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
+      <div class="absolute inset-0 bg-blue-900/60 z-10 md:hidden flex flex-col justify-start p-6 pt-16 pb-24 text-white overflow-y-auto">
         {slides.map((slide, index) => (
-          <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden w-full bg-blue-600/40 backdrop-blur-md rounded-xl p-4 border border-white/20 shadow-lg`}>
-            
-            <!-- LEFT SIDE TEXT (Shows on mobile) -->
-            <div class="mb-4">
-              <h2 class="text-white font-bold text-lg mb-2 drop-shadow-md">{slide.leftTitle}</h2>
-              <ul class="space-y-1 text-sm drop-shadow-md">
-                {slide.leftList?.map(item => (
-                  <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold">✓</span> <span set:html={item}></span></li>
-                ))}
-              </ul>
+          <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
+            <h2 class="text-white font-bold text-lg mb-2 drop-shadow-md">{slide.leftTitle || slide.rightTitle}</h2>
+            <ul class="space-y-2 text-sm mb-4 drop-shadow-md">
+              {(slide.leftList || slide.rightList).map(item => (
+                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold">✓</span> <span set:html={item}></span></li>
+              ))}
+            </ul>
+            <div class="flex flex-col gap-2">
+              <a href="/order" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black shadow-md">PLACE ORDER</a>
+              <a href="/LUBASA_CATALOGUE.pdf" download class="rounded bg-brand-600 px-4 py-2 text-center text-sm font-bold text-white shadow-md">DOWNLOAD CATALOGUE</a>
             </div>
-
-            <!-- RIGHT SIDE TEXT (Shows on mobile) -->
-            <div class="mb-4 pt-3 border-t border-white/30">
-              <h2 class="text-white font-bold text-lg mb-2 drop-shadow-md">{slide.rightTitle}</h2>
-              <ul class="space-y-1 text-sm drop-shadow-md">
-                {slide.rightList?.map(item => (
-                  <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold">✓</span> <span set:html={item}></span></li>
-                ))}
-              </ul>
-            </div>
-
-            <!-- BUTTONS -->
-            <div class="flex flex-row gap-2 mt-4">
-              <a href="/order" class="flex-1 rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black shadow-md">ORDER</a>
-              <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-brand-600 px-4 py-2 text-center text-sm font-bold text-white shadow-md">CATALOGUE</a>
-            </div>
-            
           </div>
         ))}
       </div>
-      
-           <!-- Mobile Arrows (Overlay on image) -->
-      <button id="prevBtnMobile" class="absolute left-3 top-1/2 -translate-y-1/2 z-40 bg-white/90 hover:bg-yellow-400 text-brand-900 p-2.5 rounded-full transition shadow-xl md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+
+      <!-- Mobile Arrows (Overlay on image) -->
+      <button id="prevBtnMobile" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
       </button>
-      <button id="nextBtnMobile" class="absolute right-3 top-1/2 -translate-y-1/2 z-40 bg-white/90 hover:bg-yellow-400 text-brand-900 p-2.5 rounded-full transition shadow-xl md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      <button id="nextBtnMobile" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
       </button>
-   
- </div> <!-- END OF CENTER (Image/Video) DIV -->
-
-    <!-- MOBILE TEXT SECTION (Below the image, only shows on phone) -->
-    <div class="md:hidden bg-brand-800 text-white w-full border-b border-brand-700">
-      {slides.map((slide, index) => (
-        <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden w-full p-5`}>
-          
-          <!-- LEFT SIDE TEXT -->
-          {slide.leftTitle && (
-            <div class="mb-4">
-              <h2 class="text-yellow-400 font-bold text-lg mb-2">{slide.leftTitle}</h2>
-              <ul class="space-y-2 text-sm text-gray-100">
-                {slide.leftList?.map(item => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-yellow-400 font-bold mt-1">✓</span> 
-                    <span set:html={item}></span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <!-- RIGHT SIDE TEXT -->
-          {slide.rightTitle && (
-            <div class="mb-4 pt-4 border-t border-brand-600">
-              <h2 class="text-yellow-400 font-bold text-lg mb-2">{slide.rightTitle}</h2>
-              <ul class="space-y-2 text-sm text-gray-100">
-                {slide.rightList?.map(item => (
-                  <li class="flex items-start gap-2">
-                    <span class="text-yellow-400 font-bold mt-1">✓</span> 
-                    <span set:html={item}></span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-
-          <!-- BUTTONS -->
-          <div class="flex gap-3 mt-6">
-            <a href="/order" class="flex-1 rounded bg-yellow-500 px-4 py-3 text-center text-sm font-bold text-black shadow-md transition hover:bg-yellow-400">PLACE ORDER</a>
-            <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-white px-4 py-3 text-center text-sm font-bold text-brand-800 shadow-md transition hover:bg-gray-100">CATALOGUE</a>
-          </div>
-
-        </div>
-      ))}
     </div>
 
     <!-- LEFT SIDE BAR (Desktop Only) -->
-
-   <!-- LEFT SIDE BAR (Desktop Only) -->
-    <div class="hidden md:flex md:w-[320px] bg-blue-600/60 backdrop-blur-sm p-6 md:p-8 flex-col justify-center border-r border-blue-500/50 z-20 relative order-1">
-      <button id="prevBtn" class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-blue-700/80 hover:bg-white hover:text-blue-600 text-white p-2 rounded-full transition shadow-lg">
+    <div class="hidden md:flex md:w-[320px] bg-brand-900 p-6 md:p-8 flex-col justify-center border-r border-brand-700 z-20 relative order-1">
+      <button id="prevBtn" class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-brand-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
       </button>
       <div class="relative h-[350px] mt-4 ml-10">
         {slides.map((slide, index) => (
           <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
-            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4 drop-shadow-md">
+            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">
               {slide.leftTitle}
             </h1>
-            <ul class="space-y-2 text-white text-sm font-medium drop-shadow-md">
+            <ul class="space-y-2 text-blue-100 text-sm font-medium">
               {slide.leftList.map(item => (
-                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+                <li class="flex items-start gap-2"><span class="text-brand-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
           </div>
@@ -416,29 +352,30 @@ const slides = [
       </div>
     </div>
 
-<!-- RIGHT SIDE BAR (Desktop Only) -->
-    <div class="hidden md:flex md:w-[320px] bg-blue-600/60 backdrop-blur-sm p-6 md:p-8 flex-col justify-center border-l border-blue-500/50 z-20 relative order-3">
-      <button id="nextBtn" class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-blue-700/80 hover:bg-white hover:text-blue-600 text-white p-2 rounded-full transition shadow-lg">
+    <!-- RIGHT SIDE BAR (Desktop Only) -->
+    <div class="hidden md:flex md:w-[320px] bg-brand-900 p-6 md:p-8 flex-col justify-center border-l border-brand-700 z-20 relative order-3">
+      <button id="nextBtn" class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-brand-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
       </button>
       <div class="relative h-[350px] mt-4 mr-10">
         {slides.map((slide, index) => (
           <div class={`slide-text-right ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
-            <h2 class="text-2xl font-extrabold leading-tight text-white mb-4 drop-shadow-md">
+            <h2 class="text-2xl font-extrabold leading-tight text-white mb-4">
               {slide.rightTitle}
             </h2>
-            <ul class="space-y-3 text-white text-sm font-medium mb-6 drop-shadow-md">
+            <ul class="space-y-3 text-blue-100 text-sm font-medium mb-6">
               {slide.rightList.map(item => (
-                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+                <li class="flex items-start gap-2"><span class="text-brand-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
           </div>
         ))}
       </div>
     </div>
- 
+
   </section>
- <!-- Quick Links Bar -->
+
+  <!-- Quick Links Bar -->
   <div class="bg-brand-800 border-t border-brand-700 relative z-30 shadow-md">
     <div class="mx-auto max-w-6xl px-4 flex flex-wrap justify-center md:justify-start text-sm font-medium text-white">
       <a href="/order" class="px-5 py-4 border-r border-brand-700 hover:bg-brand-700 transition border-b-2 border-b-transparent hover:border-b-yellow-400">Place Order</a>
