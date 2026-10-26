@@ -316,8 +316,8 @@ const slides = [
         </button>
       </div>
 
-      <!-- MOBILE TEXT BOX (Solid blue, scrollable, sits below image) -->
-      <div class="md:hidden w-full bg-brand-800 text-white flex-grow overflow-y-auto p-5 z-20 relative shadow-[0_10px_15px_-3px_rgba(0,0,0,0.5)]">
+      <!-- MOBILE TEXT BOX (Below the image, no blue empty space) -->
+      <div class="md:hidden w-full bg-brand-800 text-white p-5 z-20 relative shadow-[0_10px_15px_-3px_rgba(0,0,0,0.5)]">
         {slides.map((slide, index) => (
           <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
             
@@ -346,9 +346,9 @@ const slides = [
             )}
 
             <!-- Buttons and Mobile Next/Prev Arrows -->
-            <div class="flex items-center justify-between gap-2 mt-6 pb-4">
-              <!-- Prev Button -->
-              <button onclick="document.getElementById('prevBtnMobile').click()" class="bg-brand-700 hover:bg-yellow-500 hover:text-black p-3 rounded-full shadow-md transition">
+            <div class="flex items-center justify-between gap-2 mt-6">
+              <!-- Mobile Text Prev Button -->
+              <button class="mobile-text-prev bg-brand-700 hover:bg-yellow-500 hover:text-black p-2.5 rounded-full shadow-md transition">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
               </button>
 
@@ -358,8 +358,8 @@ const slides = [
                 <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-white px-2 py-2 text-center text-xs font-bold text-brand-800 shadow-md">CATALOGUE</a>
               </div>
 
-              <!-- Next Button -->
-              <button onclick="document.getElementById('nextBtnMobile').click()" class="bg-brand-700 hover:bg-yellow-500 hover:text-black p-3 rounded-full shadow-md transition">
+              <!-- Mobile Text Next Button -->
+              <button class="mobile-text-next bg-brand-700 hover:bg-yellow-500 hover:text-black p-2.5 rounded-full shadow-md transition">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
               </button>
             </div>
@@ -536,7 +536,7 @@ const slides = [
       prevSlide();
     });
 
-    // Mobile arrows
+    // Mobile image arrows
     document.getElementById('nextBtnMobile').addEventListener('click', () => {
       clearTimeout(slideTimeout);
       nextSlide();
@@ -545,6 +545,21 @@ const slides = [
     document.getElementById('prevBtnMobile').addEventListener('click', () => {
       clearTimeout(slideTimeout);
       prevSlide();
+    });
+
+    // Mobile text arrows (loops through all text boxes)
+    document.querySelectorAll('.mobile-text-next').forEach(btn => {
+      btn.addEventListener('click', () => {
+        clearTimeout(slideTimeout);
+        nextSlide();
+      });
+    });
+
+    document.querySelectorAll('.mobile-text-prev').forEach(btn => {
+      btn.addEventListener('click', () => {
+        clearTimeout(slideTimeout);
+        prevSlide();
+      });
     });
 
     if (items.length > 0) {
