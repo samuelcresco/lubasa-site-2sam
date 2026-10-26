@@ -27,13 +27,13 @@ const slides = [
       'Instant deliveries on orders', 
       'Takes 1-2 days for up country customers'
     ],
-    rightTitle: 'Contacts',
+        rightTitle: 'Contacts',
     rightList: [
-      '🏢 <b>Office:</b> 0786 610907',
-      '💬 <b>WhatsApp:</b> 0702944478 / 0784256007',
-      '✉️ <b>Email:</b> lubasainvestment@gmail.com',
-      '📘 <b>Facebook:</b> Link',
-      '🎵 <b>TikTok:</b> Link'
+      '<b>Office:</b> 0786 610907',
+      '<b>WhatsApp:</b> 0702944478 / 0784256007',
+      '<b>Email:</b> lubasainvestment@gmail.com',
+      '<b>Facebook:</b> Link',
+      '<b>TikTok:</b> Link'
     ]
   },
   
@@ -303,19 +303,19 @@ const slides = [
         ))}
       </div>
 
-      <!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
+            <!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
       <div class="absolute inset-0 bg-black/70 z-10 md:hidden flex flex-col justify-center p-6 py-12 text-white overflow-y-auto">
         {slides.map((slide, index) => (
           <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
             <h2 class="text-yellow-500 font-bold text-lg mb-2">{slide.leftTitle || slide.rightTitle}</h2>
-            <ul class="space-y-2 text-sm">
+            <ul class="space-y-2 text-sm mb-4">
               {(slide.leftList || slide.rightList).map(item => (
                 <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
-            <div class="mt-4 flex flex-col gap-2">
-               <a href="/order" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black shadow-md">PLACE ORDER</a>
-               <a href="/LUBASA_CATALOGUE.pdf" download class="rounded bg-brand-600 px-4 py-2 text-center text-sm font-bold text-white shadow-md">DOWNLOAD CATALOGUE</a>
+            <div class="flex flex-col gap-2">
+              <a href="/order" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black shadow-md">PLACE ORDER</a>
+              <a href="/LUBASA_CATALOGUE.pdf" download class="rounded bg-brand-600 px-4 py-2 text-center text-sm font-bold text-white shadow-md">DOWNLOAD CATALOGUE</a>
             </div>
           </div>
         ))}
@@ -338,10 +338,7 @@ const slides = [
       <div class="relative h-[350px] mt-4 ml-10">
         {slides.map((slide, index) => (
           <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
-            <div class="inline-block self-start rounded bg-yellow-500 px-3 py-1 text-xs font-extrabold text-black mb-4 uppercase">
-              Extra Success Chalk
-            </div>
-            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">
+            <h1 class="text-2xl font-extrabold leading-tight text-yellow-500 mb-4">
               {slide.leftTitle}
             </h1>
             <ul class="space-y-2 text-white text-sm font-medium">
@@ -370,11 +367,6 @@ const slides = [
                 <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
-            <div class="flex flex-col gap-2 mt-auto">
-              <a href="/order" class="rounded bg-yellow-500 px-4 py-2 text-center text-sm font-bold text-black hover:bg-yellow-400 shadow-md">PLACE ORDER</a>
-              <a href="/products" class="rounded border border-slate-500 px-4 py-2 text-center text-sm font-bold text-white hover:bg-white hover:text-black shadow-md">PRODUCTS</a>
-              <a href="/LUBASA_CATALOGUE.pdf" download class="rounded bg-brand-600 px-4 py-2 text-center text-sm font-bold text-white hover:bg-brand-500 shadow-md">DOWNLOAD CATALOGUE</a>
-            </div>
           </div>
         ))}
       </div>
