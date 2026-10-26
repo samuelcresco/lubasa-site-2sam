@@ -290,8 +290,7 @@ const slides = [
   <!-- MAIN SLIDER SECTION -->
   <section class="relative bg-black flex flex-col md:flex-row md:h-[600px]">
     
-    <!-- CENTER (Image/Video) -->
-    <!-- Changed h-[500px] to h-[350px] so it doesn't push the text off screen on phones -->
+    <!-- CENTER (Image/Video) - 100% Clear on Mobile -->
     <div class="w-full md:flex-1 relative h-[350px] md:h-full bg-black order-1 md:order-2 overflow-hidden">
       <div class="slider-container absolute inset-0 overflow-hidden">
         {slides.map((slide, index) => (
@@ -314,27 +313,27 @@ const slides = [
       </button>
     </div>
 
-    <!-- MOBILE TEXT BLOCK (Moved OUTSIDE the image container so it sits below it) -->
-    <div class="md:hidden bg-brand-800 w-full border-b border-brand-700">
+    <!-- MOBILE TEXT BLOCK (Sits neatly below the clear image on phones) -->
+    <div class="md:hidden bg-brand-900 w-full border-b border-brand-700">
       {slides.map((slide, index) => (
         <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden p-5 text-white`}>
           
           <!-- Left Text -->
           <div class="mb-4">
-            <h2 class="text-yellow-400 font-bold text-lg leading-tight mb-2">{slide.leftTitle}</h2>
-            <ul class="space-y-2 text-sm">
+            <h2 class="text-white font-bold text-lg leading-tight mb-2">{slide.leftTitle}</h2>
+            <ul class="space-y-2 text-sm text-blue-100">
               {slide.leftList?.map(item => (
-                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+                <li class="flex items-start gap-2"><span class="text-brand-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
           </div>
 
           <!-- Right Text -->
-          <div class="mb-4 pt-4 border-t border-brand-600">
-            <h2 class="text-yellow-400 font-bold text-lg leading-tight mb-2">{slide.rightTitle}</h2>
-            <ul class="space-y-2 text-sm">
+          <div class="mb-4 pt-4 border-t border-brand-700">
+            <h2 class="text-white font-bold text-lg leading-tight mb-2">{slide.rightTitle}</h2>
+            <ul class="space-y-2 text-sm text-blue-100">
               {slide.rightList?.map(item => (
-                <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
+                <li class="flex items-start gap-2"><span class="text-brand-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
               ))}
             </ul>
           </div>
@@ -349,7 +348,7 @@ const slides = [
       ))}
     </div>
 
-    <!-- LEFT SIDE BAR (Desktop Only) -->
+    <!-- LEFT SIDE BAR (Desktop Only - Blue Theme) -->
     <div class="hidden md:flex md:w-[320px] bg-brand-900 p-6 md:p-8 flex-col justify-center border-r border-brand-700 z-20 relative order-1">
       <button id="prevBtn" class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-brand-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
@@ -370,7 +369,7 @@ const slides = [
       </div>
     </div>
 
-    <!-- RIGHT SIDE BAR (Desktop Only) -->
+    <!-- RIGHT SIDE BAR (Desktop Only - Blue Theme) -->
     <div class="hidden md:flex md:w-[320px] bg-brand-900 p-6 md:p-8 flex-col justify-center border-l border-brand-700 z-20 relative order-3">
       <button id="nextBtn" class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-brand-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
@@ -541,11 +540,10 @@ const slides = [
       pointer-events: auto;
     }
     
-    /* Mobile specific image scaling to prevent it from over-zooming and staying centered */
+    /* Mobile specific image scaling to keep the image clear and centered */
     @media (max-width: 767px) {
       .main-media {
-        object-fit: contain !important;
-        background-color: #000;
+        object-fit: cover !important; /* Keeps the image filling the 350px height nicely */
       }
     }
 
