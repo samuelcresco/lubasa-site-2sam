@@ -4,18 +4,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 // ==========================================
 // 1. EDIT YOUR PRODUCTS HERE
 // ==========================================
-const products = [
-  { title: 'Extra Success Chalk (White)', desc: 'Smooth, dust-controlled white chalk for classrooms.', icon: '🖍️' },
-  { title: 'Extra Success Chalk (Coloured)', desc: 'Bright, long-lasting coloured chalk.', icon: '🎨' },
-  { title: 'Exercise Books (48 Pages)', desc: 'Standard 48-page exercise books.', icon: '📒' },
-  { title: 'Exercise Books (96 Pages)', desc: 'Standard 96-page exercise books.', icon: '📒' },
-  { title: 'Exercise Books (192 Pages)', desc: 'Large 192-page exercise books.', icon: '📒' },
-  { title: 'Counter Books (3 Quire)', desc: 'Durable 3 quire counter books.', icon: '📗' },
-  { title: 'Counter Books (4 Quire)', desc: 'Durable 4 quire counter books.', icon: '📗' },
-  { title: 'Notepads', desc: 'Quality notepads for daily use.', icon: '📝' },
-  { title: 'Artbooks', desc: 'Blank pages for drawing and art.', icon: '🎨' },
-  { title: 'Graphbooks', desc: 'Grid pages for math and technical drawing.', icon: '📐' },
-];
+  <!-- Our Core Business Areas -->
+  <section class="mx-auto max-w-6xl px-4 py-20">
+    <h2 class="text-center text-3xl font-extrabold text-slate-900 uppercase tracking-tight">What We Do</h2>
+    <div class="mx-auto mt-2 h-1 w-20 bg-yellow-500 mb-12"></div>
+    
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      
+      <!-- Manufacturing -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 text-center transition hover:border-brand-500 hover:shadow-xl group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition">🏭</div>
+        <h3 class="font-bold text-lg text-brand-800 mb-2">Manufacturing</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">High-quality Extra Success Chalk (White & Coloured).</p>
+      </div>
+
+      <!-- Stationery -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 text-center transition hover:border-brand-500 hover:shadow-xl group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition">📚</div>
+        <h3 class="font-bold text-lg text-brand-800 mb-2">General Stationery</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Books, printers, reams, files, pens, and office essentials.</p>
+      </div>
+
+      <!-- Services -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 text-center transition hover:border-brand-500 hover:shadow-xl group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition">🖨️</div>
+        <h3 class="font-bold text-lg text-brand-800 mb-2">Services</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Printing, branding, transportation, web design, and more.</p>
+      </div>
+
+      <!-- Consultants -->
+      <div class="rounded-xl border border-slate-200 bg-white p-8 text-center transition hover:border-brand-500 hover:shadow-xl group">
+        <div class="text-5xl mb-4 group-hover:scale-110 transition">💼</div>
+        <h3 class="font-bold text-lg text-brand-800 mb-2">Consultants</h3>
+        <p class="text-sm text-slate-600 leading-relaxed">Business registration, trademarks, accounting, and inquiries.</p>
+      </div>
+
+    </div>
+  </section>
 
 // ==========================================
 // 2. EDIT YOUR SLIDES AND TEXT HERE
