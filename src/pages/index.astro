@@ -305,11 +305,11 @@ const slides = [
       </div>
 
             <!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
-      <div class="absolute inset-0 bg-black/70 z-10 md:hidden flex flex-col justify-start p-6 pt-16 pb-24 text-white overflow-y-auto">
+      <div class="absolute inset-0 bg-blue-600/60 backdrop-blur-sm z-10 md:hidden flex flex-col justify-start p-6 pt-16 pb-24 text-white overflow-y-auto">
         {slides.map((slide, index) => (
           <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
-            <h2 class="text-yellow-500 font-bold text-lg mb-2">{slide.leftTitle || slide.rightTitle}</h2>
-            <ul class="space-y-2 text-sm mb-4">
+            <h2 class="text-white font-bold text-lg mb-2 drop-shadow-md">{slide.leftTitle || slide.rightTitle}</h2>
+            <ul class="space-y-2 text-sm mb-4 drop-shadow-md">
               {(slide.leftList || slide.rightList).map(item => (
                 <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold">✓</span> <span set:html={item}></span></li>
               ))}
@@ -321,7 +321,6 @@ const slides = [
           </div>
         ))}
       </div>
-
       <!-- Mobile Arrows (Overlay on image) -->
       <button id="prevBtnMobile" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
