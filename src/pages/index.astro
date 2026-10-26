@@ -216,7 +216,7 @@ const slides = [
     leftTitle: 'THE PRODUCTION PROCESS', 
     leftList: [
       '<b>Ingredients:</b><br/>1. Plaster of Paris (P.O.P)<br/>2. Water<br/>3. Lubricant',
-      '<b>The Process:</b><br/>We mix 3 cups of water with 1kg and 200gm of P.O.P and stir for 2 minutes until the mixture dissolves in water. We then pour it on a moulding machine which moulds it into sticks. Then we put them in the sunshine.'
+      '<b>The Process:</b><br>We mix 3 cups of water with 1kg and 200gm of P.O.P and stir for 2 minutes until the mixture dissolves in water. We then pour it on a moulding machine which moulds it into sticks. Then we put them in the sunshine.'
     ],
     rightTitle: 'REQUIREMENTS FOR PRODUCTION',
     rightList: [
@@ -289,11 +289,12 @@ const slides = [
   
   <!-- MAIN SLIDER SECTION -->
   <section class="relative bg-black flex flex-col md:flex-row md:h-[600px]">
-        <!-- CENTER (Image/Video) -->
-    <div class="w-full md:flex-1 bg-black order-1 md:order-2 relative flex flex-col md:h-full">
+        
+    <!-- CENTER (Image/Video) -->
+    <div class="w-full md:flex-1 bg-black order-1 md:order-2 relative flex flex-col md:block md:h-full">
       
-      <!-- IMAGE/VIDEO SLIDER (Fixed height on mobile so it's always clear) -->
-      <div class="relative w-full h-[350px] md:h-full shrink-0">
+      <!-- IMAGE/VIDEO SLIDER (Fixed height on mobile) -->
+      <div class="relative w-full h-[350px] md:h-full md:absolute md:inset-0 shrink-0">
         <div class="slider-container absolute inset-0 overflow-hidden">
           {slides.map((slide, index) => (
             <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
@@ -315,15 +316,15 @@ const slides = [
         </button>
       </div>
 
-      <!-- MOBILE TEXT BOX (Below the image, no blue empty space) -->
-      <div class="md:hidden w-full bg-brand-800 text-white p-5 z-20 relative">
+      <!-- MOBILE TEXT BOX (Solid blue, scrollable, sits below image) -->
+      <div class="md:hidden w-full bg-brand-800 text-white h-[350px] overflow-y-auto p-5 z-20 relative shadow-[0_10px_15px_-3px_rgba(0,0,0,0.5)]">
         {slides.map((slide, index) => (
           <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
             
             <!-- Left Text -->
             {slide.leftTitle && (
-              <div class="mb-4">
-                <h2 class="text-yellow-400 font-bold text-lg mb-2">{slide.leftTitle}</h2>
+              <div class="mb-5">
+                <h2 class="text-yellow-400 font-bold text-lg mb-2 border-b border-brand-700 pb-1">{slide.leftTitle}</h2>
                 <ul class="space-y-2 text-sm text-gray-100">
                   {slide.leftList?.map(item => (
                     <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
@@ -334,8 +335,8 @@ const slides = [
 
             <!-- Right Text -->
             {slide.rightTitle && (
-              <div class="mb-4 pt-4 border-t border-brand-600">
-                <h2 class="text-yellow-400 font-bold text-lg mb-2">{slide.rightTitle}</h2>
+              <div class="mb-5">
+                <h2 class="text-yellow-400 font-bold text-lg mb-2 border-b border-brand-700 pb-1">{slide.rightTitle}</h2>
                 <ul class="space-y-2 text-sm text-gray-100">
                   {slide.rightList?.map(item => (
                     <li class="flex items-start gap-2"><span class="text-yellow-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
@@ -345,9 +346,9 @@ const slides = [
             )}
 
             <!-- Buttons -->
-            <div class="flex gap-2 mt-4">
-              <a href="/order" class="flex-1 rounded bg-yellow-500 px-3 py-2 text-center text-sm font-bold text-black shadow-md">ORDER</a>
-              <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-white px-3 py-2 text-center text-sm font-bold text-brand-800 shadow-md">CATALOGUE</a>
+            <div class="flex gap-2 mt-6 pb-6">
+              <a href="/order" class="flex-1 rounded bg-yellow-500 px-3 py-3 text-center text-sm font-bold text-black shadow-md">PLACE ORDER</a>
+              <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-white px-3 py-3 text-center text-sm font-bold text-brand-800 shadow-md">CATALOGUE</a>
             </div>
           </div>
         ))}
@@ -420,8 +421,8 @@ const slides = [
       <a href="/contact" class="mt-6 inline-block rounded-lg bg-brand-600 px-8 py-3 font-bold text-white transition hover:bg-brand-800 shadow-lg">Place Your Order Now</a>
     </div>
   </section>
+  
  <!-- Our Core Business Areas -->
-    <!-- Our Core Business Areas -->
   <section class="mx-auto max-w-6xl px-4 py-20">
     <h2 class="text-center text-3xl font-extrabold text-slate-900 uppercase tracking-tight">What We Do</h2>
     <div class="mx-auto mt-2 h-1 w-20 bg-yellow-500 mb-12"></div>
@@ -459,18 +460,7 @@ const slides = [
     </div>
   </section>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/256702944948?text=Hello%20LUBASA,%20I%20am%20interested%20in%20your%20products%20and%20services." 
-     target="_blank" 
-     rel="noopener noreferrer"
-     class="fixed bottom-6 right-6 z-[999] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center group"
-     aria-label="Chat on WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-current">
-      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-    </svg>
-  </a>
-  
-<!-- Slider Logic -->
+  <!-- Slider Logic -->
   <script>
     let items = document.querySelectorAll('.slide-item');
     let textsLeft = document.querySelectorAll('.slide-text-left');
@@ -554,6 +544,7 @@ const slides = [
       transition: opacity 0.8s ease-in-out;
       pointer-events: none;
     }
+    
     .slide-item.active, .slide-text-left.active, .slide-text-right.active, .slide-text-mobile.active {
       opacity: 1;
       pointer-events: auto;
@@ -562,12 +553,27 @@ const slides = [
     /* Mobile specific image scaling to keep the image clear and centered */
     @media (max-width: 767px) {
       .main-media {
-        object-fit: cover !important; /* Keeps the image filling the 350px height nicely */
+        object-fit: cover !important; 
       }
+      /* Fallback to force the first slide to show on mobile */
+      .slide-item:first-child { opacity: 1; pointer-events: auto; }
+      .slide-text-mobile:first-child { opacity: 1; pointer-events: auto; }
     }
 
     @media (min-width: 768px) {
       .slide-text-mobile { display: none !important; }
     }
   </style>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/256702944948?text=Hello%20LUBASA,%20I%20am%20interested%20in%20your%20products%20and%20services." 
+     target="_blank" 
+     rel="noopener noreferrer"
+     class="fixed bottom-6 right-6 z-[999] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 flex items-center justify-center"
+     aria-label="Chat on WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-current">
+      <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+  </a>
+
 </BaseLayout>
