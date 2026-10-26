@@ -291,7 +291,8 @@ const slides = [
   <section class="relative bg-black flex flex-col md:flex-row md:h-[600px]">
     
     <!-- CENTER (Image/Video) -->
-    <div class="w-full md:flex-1 relative h-[500px] md:h-full bg-black order-1 md:order-2 overflow-hidden">
+    <!-- Changed h-[500px] to h-[350px] so it doesn't push the text off screen on phones -->
+    <div class="w-full md:flex-1 relative h-[350px] md:h-full bg-black order-1 md:order-2 overflow-hidden">
       <div class="slider-container absolute inset-0 overflow-hidden">
         {slides.map((slide, index) => (
           <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
@@ -304,7 +305,16 @@ const slides = [
         ))}
       </div>
 
-          <!-- MOBILE TEXT BLOCK (Solid Blue, No Image Overlay) -->
+      <!-- Mobile Arrows (Overlay on image) -->
+      <button id="prevBtnMobile" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+      </button>
+      <button id="nextBtnMobile" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+      </button>
+    </div>
+
+    <!-- MOBILE TEXT BLOCK (Moved OUTSIDE the image container so it sits below it) -->
     <div class="md:hidden bg-brand-800 w-full border-b border-brand-700">
       {slides.map((slide, index) => (
         <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden p-5 text-white`}>
@@ -337,15 +347,6 @@ const slides = [
 
         </div>
       ))}
-    </div>
-
-      <!-- Mobile Arrows (Overlay on image) -->
-      <button id="prevBtnMobile" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
-      </button>
-      <button id="nextBtnMobile" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-black/60 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg md:hidden">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
-      </button>
     </div>
 
     <!-- LEFT SIDE BAR (Desktop Only) -->
@@ -540,6 +541,14 @@ const slides = [
       pointer-events: auto;
     }
     
+    /* Mobile specific image scaling to prevent it from over-zooming and staying centered */
+    @media (max-width: 767px) {
+      .main-media {
+        object-fit: contain !important;
+        background-color: #000;
+      }
+    }
+
     @media (min-width: 768px) {
       .slide-text-mobile { display: none !important; }
     }
