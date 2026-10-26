@@ -305,7 +305,7 @@ const slides = [
       </div>
 
             <!-- MOBILE TEXT OVERLAY (Only shows on phone) -->
-      <div class="absolute inset-0 bg-blue-600/60 backdrop-blur-sm z-10 md:hidden flex flex-col justify-start p-6 pt-16 pb-24 text-white overflow-y-auto">
+      <div class="absolute inset-0 bg-blue-900/60 z-10 md:hidden flex flex-col justify-start p-6 pt-16 pb-24 text-white overflow-y-auto">
         {slides.map((slide, index) => (
           <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
             <h2 class="text-white font-bold text-lg mb-2 drop-shadow-md">{slide.leftTitle || slide.rightTitle}</h2>
