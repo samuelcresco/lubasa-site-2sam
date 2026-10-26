@@ -345,11 +345,25 @@ const slides = [
               </div>
             )}
 
-            <!-- Buttons -->
-            <div class="flex gap-2 mt-6 pb-6">
-              <a href="/order" class="flex-1 rounded bg-yellow-500 px-3 py-3 text-center text-sm font-bold text-black shadow-md">PLACE ORDER</a>
-              <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-white px-3 py-3 text-center text-sm font-bold text-brand-800 shadow-md">CATALOGUE</a>
+            <!-- Buttons and Mobile Next/Prev Arrows -->
+            <div class="flex items-center justify-between gap-2 mt-6 pb-4">
+              <!-- Prev Button -->
+              <button onclick="document.getElementById('prevBtnMobile').click()" class="bg-brand-700 hover:bg-yellow-500 hover:text-black p-3 rounded-full shadow-md transition">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+              </button>
+
+              <!-- Order & Catalogue -->
+              <div class="flex flex-1 gap-2">
+                <a href="/order" class="flex-1 rounded bg-yellow-500 px-2 py-2 text-center text-xs font-bold text-black shadow-md">ORDER</a>
+                <a href="/LUBASA_CATALOGUE.pdf" download class="flex-1 rounded bg-white px-2 py-2 text-center text-xs font-bold text-brand-800 shadow-md">CATALOGUE</a>
+              </div>
+
+              <!-- Next Button -->
+              <button onclick="document.getElementById('nextBtnMobile').click()" class="bg-brand-700 hover:bg-yellow-500 hover:text-black p-3 rounded-full shadow-md transition">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+              </button>
             </div>
+            
           </div>
         ))}
       </div>
