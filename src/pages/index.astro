@@ -209,7 +209,7 @@ const slides = [
     ]
   },
   
-  // --- 4 VIDEOS (UPDATED WITH LIVE VERCEL LINKS) ---
+  // --- 4 VIDEOS ---
   { 
     type: 'video', 
     src: 'https://glil7gabchyerz3o.public.blob.vercel-storage.com/video1.mp4', 
@@ -293,13 +293,13 @@ const slides = [
     <!-- CENTER (Image/Video) -->
     <div class="w-full md:flex-1 bg-black order-1 md:order-2 relative flex flex-col md:block md:h-full">
       
-      <!-- IMAGE/VIDEO SLIDER (Fixed height on mobile) -->
+      <!-- IMAGE/VIDEO SLIDER -->
       <div class="relative w-full h-[350px] md:h-full md:absolute md:inset-0 shrink-0">
         <div class="slider-container absolute inset-0 overflow-hidden">
           {slides.map((slide, index) => (
             <div class={`slide-item absolute inset-0 ${index === 0 ? 'active' : ''}`} data-type={slide.type}>
               {slide.type === 'video' ? (
-                <video src={slide.src} preload="auto" muted playsinline class="main-media w-full h-full object-cover"></video>
+                <video src={slide.src} preload="auto" muted controls playsinline class="main-media w-full h-full object-cover"></video>
               ) : (
                 <img src={slide.src} alt="Slide" class="main-media w-full h-full object-cover" />
               )}
@@ -316,7 +316,7 @@ const slides = [
         </button>
       </div>
 
-      <!-- MOBILE TEXT BOX (Below the image, no blue empty space) -->
+      <!-- MOBILE TEXT BOX -->
       <div class="md:hidden w-full bg-brand-800 text-white p-5 z-20 relative shadow-[0_10px_15px_-3px_rgba(0,0,0,0.5)] max-h-[400px] overflow-y-auto">
         {slides.map((slide, index) => (
           <div class={`slide-text-mobile ${index === 0 ? 'active' : ''} md:hidden`}>
@@ -347,18 +347,15 @@ const slides = [
 
             <!-- Buttons and Mobile Next/Prev Arrows -->
             <div class="flex items-center justify-between gap-2 mt-6">
-              <!-- Mobile Text Prev Button -->
               <button class="mobile-text-prev bg-brand-700 hover:bg-yellow-500 hover:text-black p-2.5 rounded-full shadow-md transition">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
               </button>
 
-              <!-- Order & Catalogue -->
               <div class="flex flex-1 gap-2">
                 <a href="/order" class="flex-1 rounded bg-yellow-500 px-2 py-2 text-center text-xs font-bold text-black shadow-md">ORDER</a>
                 <a href="/LUBASA_CATALOGUE.pdf" download="LUBASA_CATALOGUE.pdf" class="flex-1 rounded bg-white px-2 py-2 text-center text-xs font-bold text-brand-800 shadow-md">CATALOGUE</a>
               </div>
 
-              <!-- Mobile Text Next Button -->
               <button class="mobile-text-next bg-brand-700 hover:bg-yellow-500 hover:text-black p-2.5 rounded-full shadow-md transition">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
               </button>
@@ -370,7 +367,7 @@ const slides = [
 
     </div>
 
-    <!-- LEFT SIDE BAR (Desktop Only - Blue Theme) -->
+    <!-- LEFT SIDE BAR (Desktop Only) -->
     <div class="hidden md:flex md:w-[320px] bg-brand-900 p-6 md:p-8 flex-col justify-center border-r border-brand-700 z-20 relative order-1">
       <button id="prevBtn" class="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-brand-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
@@ -378,9 +375,7 @@ const slides = [
       <div class="relative h-[350px] mt-4 ml-10">
         {slides.map((slide, index) => (
           <div class={`slide-text-left ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
-            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">
-              {slide.leftTitle}
-            </h1>
+            <h1 class="text-2xl font-extrabold leading-tight text-white mb-4">{slide.leftTitle}</h1>
             <ul class="space-y-2 text-blue-100 text-sm font-medium">
               {slide.leftList.map(item => (
                 <li class="flex items-start gap-2"><span class="text-brand-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
@@ -391,7 +386,7 @@ const slides = [
       </div>
     </div>
 
-    <!-- RIGHT SIDE BAR (Desktop Only - Blue Theme) -->
+    <!-- RIGHT SIDE BAR (Desktop Only) -->
     <div class="hidden md:flex md:w-[320px] bg-brand-900 p-6 md:p-8 flex-col justify-center border-l border-brand-700 z-20 relative order-3">
       <button id="nextBtn" class="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-brand-800 hover:bg-yellow-500 hover:text-black text-white p-2 rounded-full transition shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
@@ -399,9 +394,7 @@ const slides = [
       <div class="relative h-[350px] mt-4 mr-10">
         {slides.map((slide, index) => (
           <div class={`slide-text-right ${index === 0 ? 'active' : ''} absolute top-0 left-0 w-full flex flex-col`}>
-            <h2 class="text-2xl font-extrabold leading-tight text-white mb-4">
-              {slide.rightTitle}
-            </h2>
+            <h2 class="text-2xl font-extrabold leading-tight text-white mb-4">{slide.rightTitle}</h2>
             <ul class="space-y-3 text-blue-100 text-sm font-medium mb-6">
               {slide.rightList.map(item => (
                 <li class="flex items-start gap-2"><span class="text-brand-400 font-bold mt-1">✓</span> <span set:html={item}></span></li>
@@ -535,7 +528,6 @@ const slides = [
       prevSlide();
     });
 
-    // Mobile image arrows
     document.getElementById('nextBtnMobile').addEventListener('click', () => {
       clearTimeout(slideTimeout);
       nextSlide();
@@ -546,7 +538,6 @@ const slides = [
       prevSlide();
     });
 
-    // Mobile text arrows (loops through all text boxes)
     document.querySelectorAll('.mobile-text-next').forEach(btn => {
       btn.addEventListener('click', () => {
         clearTimeout(slideTimeout);
@@ -567,21 +558,27 @@ const slides = [
   </script>
 
   <style>
-    .slide-item, .slide-text-left, .slide-text-right, .slide-text-mobile {
+    .slide-item, .slide-text-left, .slide-text-right {
       opacity: 0;
       transition: opacity 0.8s ease-in-out;
       pointer-events: none;
     }
     
-    .slide-item.active, .slide-text-left.active, .slide-text-right.active, .slide-text-mobile.active {
+    .slide-item.active, .slide-text-left.active, .slide-text-right.active {
       opacity: 1;
       pointer-events: auto;
     }
     
-    /* Mobile specific image scaling to keep the image clear and centered */
     @media (max-width: 767px) {
       .main-media {
         object-fit: cover !important; 
+      }
+      /* THE FIX: Hide the non-active mobile text boxes completely */
+      .slide-text-mobile {
+        display: none;
+      }
+      .slide-text-mobile.active {
+        display: block;
       }
     }
 
